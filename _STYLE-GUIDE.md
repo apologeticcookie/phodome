@@ -185,7 +185,7 @@ When writing any block of code that is logically subordinate to the line immedia
 
 ### Code density
 
-* Conserve line quantity by minimizing the number lines you write in. The more concisely your code is written, the more context can be seen in one screen.
+* Conserve line quantity by minimizing the number of lines you write in. The more concisely your code is written, the more context can be seen in one screen.
 * Conserve line length by minimizing the amount of complexity you put on each line. Long lines are difficult to read. Rather than a character count limit, I recommend limiting the amount of complexity you put on a single line. Try to make it easily read in one glance. This goal is in conflict with the line quantity goal, so you must do your best to balance them.
 
 ### Comments
