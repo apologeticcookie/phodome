@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/apologeticcookie/apologeticcookie#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "pg": "6.1.0"
   }
 }
