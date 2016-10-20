@@ -62,3 +62,5 @@ class VRScene extends React.Component {
 }
 
 ReactDOM.render(<VRScene/>, document.querySelector('.scene-container'));
+
+module.exports.VRScene = VRScene;
