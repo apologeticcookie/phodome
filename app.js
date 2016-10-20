@@ -10,30 +10,33 @@ app.listen(process.env.PORT || 9999, function() {
   console.log(`listening on port ${process.env.PORT || 9999}`);
 });
 
-
 // Database set up
 // Ref: http://docs.sequelizejs.com/en/latest/docs/getting-started/
+// Ref on localhost URI: http://stackoverflow.com/questions/3582552/postgres-connection-url
+// Notes to set up local database:
+// a) Download Postgres App from http://postgresapp.com/
+// b) Start local database from the Desktop app
+// c) start server using 'node app.js'
 var Sequelize = require('sequelize');
-var sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://user:pass@example.com:5432/dbname');
+var sequelize = new Sequelize(process.env.DATABASE_URL || 'postgresql://localhost');
 
-var User = sequelize.define('user', {
-  firstName: {
+var Photo = sequelize.define('photo', {
+  imageId: {
     type: Sequelize.STRING
   },
-  lastName: {
+  comment: {
     type: Sequelize.STRING
   }
 });
 
 // force: true will drop the table if it already exists
-User.sync({force: true}).then(function () {
-  // Table created
-  return User.create({
-    firstName: 'John',
-    lastName: 'Hancock'
+Photo.sync({force: true}).then(function () {
+  return Photo.create({
+    imageId: 'shaka.jpg',
+    comment: 'Whatddup'
   });
 });
 
-User.findAll().then(function(users) {
-  console.log(users);
-})
+Photo.findAll().then(function(photos) {
+  console.log(photos);
+});
