@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run test:client",
-    "test:client": "mocha ./test/server/.setup.js test/server/*.spec.js",
+    "test:client": "mocha ./test/server/.setup.js test/server/*.spec.js test/server/*/*.spec.js",
     "build": "webpack",
     "serve": "webpack-dev-server --content-base src --progress --watch --history-api-fallback --inline --hot --host 0.0.0.0 --port 9999"
   },
