@@ -17,28 +17,37 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+> Name the product in a way the reader (i.e. your target customers) will understand.
+Phodome
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+> Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+Phodome allows social media users the ability to upload and view photos with a virtual reality feel.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+> Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+Phodome allows users to view and upload photos in a virtual reality style environment. The user will be able to share photos that they would like to share to their personal profile page. Friends will be able to view their page and see all of the pictures that they have posted.
 
 ## Problem ##
-  > Describe the problem your product solves.
+> Describe the problem your product solves.
+Photo sharing has come a long way over the past few years, but we feel that with new technology comes new opportunites. With virtual reality emerging on the market, we can update how the user can view and share photos.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+> Describe how your product elegantly solves the problem.
+The virtual reality market is growing exponentially and we believe that Phodome will be able to use this growth to give their users a better experience in photo sharing. The 3D aspect will be fun for users and will also make the experience more interactive.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+> A quote from a spokesperson in your company.
+"Photos should make you feel something and that's what Phodome is about."
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+> Describe how easy it is to get started.
+In three steps you can be sharing your life with your friends. The first step is creating an account. The second step is uploading pictures. The third step is organizing them adn then you are all set.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+> Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+"I felt like I was there in the photos. It really brought a new view to looking at pictures."
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+> Wrap it up and give pointers where the reader should go next.
+Phodome is pushing photo sharing into a whole new view. Join us at Phodome.com to start your adventure.
