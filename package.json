@@ -1,0 +1,30 @@
+{
+  "name": "apologeticcookie",
+  "version": "1.0.0",
+  "description": "Next Generation Photo Exploration App",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apologeticcookie/apologeticcookie.git"
+  },
+  "keywords": [
+    "react",
+    "material-ui",
+    "aframe",
+    "postgresSQL",
+    "node",
+    "express"
+  ],
+  "author": "John Oksasoglu, Jon Eleiott, Riyaz Ahmed, Tony K. Tan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/apologeticcookie/apologeticcookie/issues"
+  },
+  "homepage": "https://github.com/apologeticcookie/apologeticcookie#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
