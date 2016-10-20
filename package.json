@@ -27,15 +27,16 @@
   },
   "homepage": "https://github.com/apologeticcookie/apologeticcookie#readme",
   "dependencies": {
-    "express": "^4.14.0",
-    "pg": "6.1.0",
     "aframe": "^0.3.2",
     "aframe-animation-component": "^3.0.4",
     "aframe-bmfont-text-component": "^0.1.4",
     "aframe-react": "^3.2.3",
     "aframe-text-component": "^0.3.0",
     "babel-polyfill": "^6.3.14",
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "pg": "^6.1.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^3.24.4"
   },
   "devDependencies": {
     "babel": "^6.3.13",

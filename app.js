@@ -11,18 +11,29 @@ app.listen(process.env.PORT || 9999, function() {
 });
 
 
-// PostgreSQL Database
-var pg = require('pg');
+// Database set up
+// Ref: http://docs.sequelizejs.com/en/latest/docs/getting-started/
+var Sequelize = require('sequelize');
+var sequelize = new Sequelize(process.env.DATABASE_URL || 'postgres://user:pass@example.com:5432/dbname');
 
-pg.defaults.ssl = true;
-pg.connect(process.env.DATABASE_URL, function(err, client) {
-  if (err) throw err;
-  console.log('Connected to postgres!');
-
-  /* Comment out select statement for now */
-  // client
-  //   .query('SELECT table_schema,table_name FROM information_schema.tables;')
-  //   .on('row', function(row) {
-  //     console.log(JSON.stringify(row));
-  //   });
+var User = sequelize.define('user', {
+  firstName: {
+    type: Sequelize.STRING
+  },
+  lastName: {
+    type: Sequelize.STRING
+  }
 });
+
+// force: true will drop the table if it already exists
+User.sync({force: true}).then(function () {
+  // Table created
+  return User.create({
+    firstName: 'John',
+    lastName: 'Hancock'
+  });
+});
+
+User.findAll().then(function(users) {
+  console.log(users);
+})
