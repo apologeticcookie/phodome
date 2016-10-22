@@ -5,7 +5,7 @@ require('babel-polyfill');
 var IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 var ENTRY_POINTS = [
-  './client/src/js/app'
+  './client/src/app'
 ];
 
 var JS_LOADERS = [
@@ -18,7 +18,7 @@ if (IS_PRODUCTION) {
   PLUGINS.push(
     new webpack.optimize.UglifyJsPlugin({
       mangle: {
-          except: ['$super', '$', 'exports', 'require']
+        except: ['$super', '$', 'exports', 'require']
       },
       sourcemap: false
     })
@@ -30,7 +30,6 @@ module.exports = {
   output: {
     // Bundle will be served at /bundle.js locally.
     filename: 'bundle.js',
-    // Bundle will be built at ./src/media/js.
     path: './client/build',
     publicPath: '/client',
   },
