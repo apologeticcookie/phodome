@@ -1,3 +1,5 @@
+// This file doesn't seem to actually do anything given the current karma setup
+// so it should probably be removed
 require('babel-register')();
 
 var jsdom = require('jsdom').jsdom;
