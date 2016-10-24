@@ -10,6 +10,7 @@
     "test:server": "mocha ./test/server/.setup.js test/server/*.spec.js test/server/*/*.spec.js",
     "lint": "eslint ./",
     "build": "webpack",
+    "build:watch": "webpack --watch",
     "serve": "webpack-dev-server --content-base client --progress --watch --history-api-fallback --inline --hot --host 0.0.0.0 --port 9999"
   },
   "repository": {
