@@ -10,10 +10,17 @@ import Text from './Text';
 import Sky from './Sky';
 import Image from './Image';
 
+const testImages = [
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg'
+];
+
 class PhodomeScene extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {color: 'red'};
+  constructor() {
+    super();
+    this.state = {
+      color: 'red',
+      images: testImages
+    };
   }
 
   changeColor() {
@@ -34,10 +41,15 @@ class PhodomeScene extends React.Component {
 
         <Sky color="#000"/>
 
-        <Image
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg"
-          position='0 -0.5 -3'
-        />
+        {
+          this.state.images.map((imageUrl, index) => (
+            <Image
+              key={index}
+              src={imageUrl}
+              position={`0 -0.5 ${-3 + (-3 * index)}`}
+            />
+          ))
+        }
 
         <Text
           text='Welcome to Phodome!'
