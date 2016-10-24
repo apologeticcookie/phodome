@@ -1,7 +1,7 @@
 var db = require('../db');
 var Sequelize = require('sequelize');
 
-var Photo = db.define('photo', {
+var URL = db.define('url', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true
@@ -9,15 +9,9 @@ var Photo = db.define('photo', {
   name: {
     type: Sequelize.STRING
   },
-  location: {
-  	type:Sequelize.STRING
-  },
-  type: {
-  	type:Sequelize.STRING
-  },
-  id_url: {
-  	type:Sequelize.INTEGER
+  link: {
+    type: Sequelize.STRING
   }
 });
 
-module.exports = Photo;
+module.exports = URL;
