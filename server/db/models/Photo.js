@@ -4,6 +4,7 @@ var Sequelize = require('sequelize');
 var Photo = db.define('photo', {
   id: {
     type: Sequelize.INTEGER,
+    autoIncrement: true,
     primaryKey: true
   },
   name: {

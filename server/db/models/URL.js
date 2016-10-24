@@ -4,6 +4,7 @@ var Sequelize = require('sequelize');
 var URL = db.define('url', {
   id: {
     type: Sequelize.INTEGER,
+     autoIncrement: true,
     primaryKey: true
   },
   name: {
