@@ -35,7 +35,7 @@ class VRScene extends React.Component {
           </a-cursor>
         </Camera>
 
-        <Sky color="#111"/>
+        <Sky color="#000"/>
 
         <Image
           src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg"
