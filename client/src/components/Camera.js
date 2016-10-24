@@ -8,7 +8,7 @@ const Camera = props => (
 );
 
 Camera.propTypes = {
-  
+
 };
 
 export default Camera;
