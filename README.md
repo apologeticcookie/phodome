@@ -1,12 +1,12 @@
-# Project Name
+# Phodome
 
-> Pithy project description
+> Phodome allows social media users the ability to upload and view photos with a virtual reality feel.
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Jon Eleiott
+  - __Scrum Master__: Riyaz Ahmed
+  - __Development Team Members__: John Oksasoglu, Tony Tan
 
 ## Table of Contents
 
@@ -20,15 +20,13 @@
 
 ## Usage
 
-> Some usage instructions
+> Start using Phodome [here](https://phodome.herokuapp.com/)
 
 ## Requirements
 
 - Node 0.10.x
 - Redis 2.6.x
 - Postgresql 9.1.x
-- etc
-- etc
 
 ## Development
 
@@ -44,7 +42,7 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+View the project roadmap [here](https://github.com/apologeticcookie/apologeticcookie/issues)
 
 
 ## Contributing
