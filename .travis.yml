@@ -2,6 +2,12 @@ language: node_js
 node_js:
   - '4.5.0'
 
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database travis;' -U postgres
+
 before_install:
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
