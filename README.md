@@ -24,20 +24,27 @@
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
+> The app is designed to be used as a single page web application. For running the application locally, see instructions below.
 
 ## Development
 
 ### Installing Dependencies
 
-From within the root directory:
+a) From within the root directory:
 
 ```sh
-sudo npm install -g bower
 npm install
-bower install
+```
+
+b) Set up local database:
+> Download [Postgres App](http://postgresapp.com/)
+> Start local database from the Desktop app
+> In the database shell, enter 'create database phodome;'
+
+c) Start local instance of the app in the root directory
+
+```sh
+node app.js
 ```
 
 ### Roadmap
