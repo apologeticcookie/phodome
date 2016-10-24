@@ -1,12 +1,21 @@
-import {Entity} from 'aframe-react';
+import { Entity } from 'aframe-react';
 import React from 'react';
 
-export default props => {
+const Text = props => {
   const extraProps = AFRAME.utils.extend({}, props);
   delete extraProps.color;
   delete extraProps.text;
 
-  return <Entity
-    text={{text: props.text}} material={{color: props.color}}
-    {...extraProps}/>
+  return (
+    <Entity
+      text={{text: props.text}} material={{color: props.color}}
+      {...extraProps}/>
+  );
 };
+
+Text.propTypes = {
+  text: React.PropTypes.string.isRequired,
+  color: React.PropTypes.string.isRequired
+};
+
+export default Text;

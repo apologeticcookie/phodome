@@ -2,7 +2,7 @@ import 'aframe';
 import 'aframe-animation-component';
 import 'aframe-text-component';
 import 'babel-polyfill';
-import {Entity, Scene} from 'aframe-react';
+import { Entity, Scene, Image } from 'aframe-react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -34,6 +34,8 @@ class VRScene extends React.Component {
         </Camera>
 
         <Sky src="url(https://rawgit.com/aframevr/assets/gh-pages/360-image-gallery-boilerplate/img/sechelt.jpg)"/>
+
+        <Image src="another-image.png"></Image>
 
         <Text
           text='Hello World!'
