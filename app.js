@@ -3,9 +3,7 @@ var app = express();
 var db = require('./server/db/db');
 var Photo = require('./server/db/models/Photo');
 
-app.get('/', function(request, response) {
-  response.send('This marks the beginning of Phodome');
-});
+app.use(express.static(__dirname + '/client'));
 
 app.listen(process.env.PORT || 9999, function() {
   console.log(`listening on port ${process.env.PORT || 9999}`);
