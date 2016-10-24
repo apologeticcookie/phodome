@@ -45,7 +45,8 @@
     "react-dom": "^15.3.2",
     "pg": "^6.1.0",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^3.24.4"
+    "sequelize": "^3.24.4",
+    "webpack": "^1.12.9"
   },
   "devDependencies": {
     "babel": "^6.3.13",
@@ -79,7 +80,6 @@
     "request": "^2.75.0",
     "sinon": "^1.17.6",
     "style-loader": "^0.13.0",
-    "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   }
 }
