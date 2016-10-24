@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom';
 import Camera from './components/Camera';
 import Text from './components/Text';
 import Sky from './components/Sky';
+import Image from './components/Image';
 
 // <Image src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg" position='-1.75 1 -3'></Image>
 
@@ -30,24 +31,15 @@ class VRScene extends React.Component {
       <Scene>
         <Camera>
           <a-cursor
-            animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
->
+            animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150">
           </a-cursor>
         </Camera>
 
         <Sky color="#111"/>
 
-        <Entity
-          geometry={{
-            primitive: 'box',
-            width: 0.8,
-            height: 0.8,
-            depth: 0
-          }}
+        <Image
+          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg"
           position='0 -0.5 -3'
-          material={{
-            src: 'url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg)'
-          }}
         />
 
         <Text
