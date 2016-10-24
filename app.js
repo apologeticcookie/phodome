@@ -11,13 +11,16 @@ app.listen(process.env.PORT || 9999, function() {
 
 // Creates a table named 'photos'
 // force: true will drop the table if it already exists
-Photo.sync({force: true}).then(function () {
+Photo.sync({force: true})
+.then(function() {
   return Photo.create({
     imageId: 'shaka.jpg',
     comment: 'Whatddup'
   });
-});
-
-Photo.findAll().then(function(photos) {
+})
+.then(function() {
+  return Photo.findAll();
+})
+.then(function(photos) {
   console.log(photos);
 });
