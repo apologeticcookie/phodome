@@ -4,6 +4,7 @@
   "description": "Next Generation Photo Exploration App",
   "main": "index.js",
   "scripts": {
+    "postinstall": "npm run build",
     "start": "node app.js",
     "test": "npm run test:client && npm run test:server",
     "test:client": "karma start --single-run",
