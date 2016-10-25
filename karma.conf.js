@@ -51,7 +51,8 @@ module.exports = function(config) {
       'karma-webpack',
       'karma-jasmine',
       'karma-sourcemap-loader',
-      'karma-chrome-launcher'
+      'karma-chrome-launcher',
+      'karma-mocha-reporter'
     ],
 
     babelPreprocessor: {
@@ -64,7 +65,7 @@ module.exports = function(config) {
       }
     },
 
-    reporters: ['progress'],
+    reporters: ['mocha'],
     port: 9998,
     colors: true,
     logLevel: config.LOG_INFO,
