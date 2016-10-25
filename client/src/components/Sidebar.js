@@ -1,6 +1,9 @@
 import React from 'react';
-// import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+
+injectTapEventPlugin();
 
 //Side dock that allows user to select Home or Upload Image
 class Sidebar extends React.Component {
@@ -15,15 +18,19 @@ class Sidebar extends React.Component {
   // can add these back into the render()
     
     // handleToggle = () => this.setState({open: !this.state.open});
+
+    // import Drawer from 'material-ui/Drawer';
     // <Drawer open={this.state.open}>
     // </Drawer>
 
   render() {
     return (
-      <div>
-          <MenuItem>Home</MenuItem>
-          <MenuItem>Upload Image</MenuItem>
-      </div>
+      <MuiThemeProvider>  
+        <div>
+            <MenuItem>Home</MenuItem>
+            <MenuItem>Upload Image</MenuItem>
+        </div>
+      </MuiThemeProvider>
     );
   }
 }

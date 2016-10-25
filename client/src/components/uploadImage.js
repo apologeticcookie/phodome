@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-
 import CancelButton 'react-fine-uploader/components/cancel-button'
 import FineUploaderTraditional from 'react-fine-uploader'
 import Thumbnail 'react-fine-uploader/components/thumbnail'
