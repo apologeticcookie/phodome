@@ -23,13 +23,13 @@ var spherePositions = function(N, r) {
 
   // algorithm approximates each position to occupy the same area of a sphere,
   // in a layout that places the positions in concentric horizontal circles.
-  
+
   var nCount = 0;
   // divides area of a sphere by the number of points
   var a = 4 * Math.PI * Math.pow(r, 2) / N;
   // square roots the area to find height/width of each square
   var d = Math.pow(a, 0.5);
-  
+
   // sets interval m0
   var m0 = Math.round(Math.PI / d);
 
@@ -83,8 +83,9 @@ $( document ).ready(function() {
     marker: {
       size: 12,
       line: {
-      color: 'rgba(217, 217, 217, 0.14)',
-      width: 0.5},
+        color: 'rgba(217, 217, 217, 0.14)',
+        width: 0.5
+      },
       opacity: 0.8},
     type: 'scatter3d'
   };
