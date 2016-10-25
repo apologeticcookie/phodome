@@ -4,19 +4,21 @@ import 'aframe-text-component';
 import { Entity } from 'aframe-react';
 import React from 'react';
 
-import getSpherePositions from '../util/sphereMath';
+import getDomePositions from '../util/sphereMath';
 import Image from './Image';
 
+const RADIUS = 6;
+
 const Dome = props => {
-  const positions = getSpherePositions(props.images.length, 1);
+  const positions = getDomePositions(props.images.length, 1);
 
   return (
     <Entity>
       {
         props.images.map((imageUrl, index) => {
-          const x = positions[index][0];
-          const y = positions[index][1];
-          const z = positions[index][2];
+          const x = positions[index][0] * RADIUS;
+          const y = positions[index][1] * RADIUS;
+          const z = positions[index][2] * RADIUS;
           return (
             <Image
             key={index}
