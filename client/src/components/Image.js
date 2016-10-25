@@ -10,6 +10,7 @@ const Image = props => (
       depth: 0
     }}
     position={props.position}
+    look-at='0 0 0'
     material={{
       src: `url(${props.src})`
     }}
