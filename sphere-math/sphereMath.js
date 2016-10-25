@@ -53,9 +53,16 @@ var spherePositions = function(N, r) {
   return positions;
 };
 
-var number = 400;
-var testPositions = spherePositions(number, 1);
-console.log(`invoking spherePositions with ${number} yields ${testPositions.length} positions`);
+// domePositions takes the first half positions
+// and generates the positions in a dome
+var domePositions = function(n, r) {
+  return spherePositions(2 * n, r).slice(0, n);
+};
+
+// toggle to render sphere or dome
+var number = 1000;
+// var testPositions = spherePositions(number, 1);
+var testPositions = domePositions(number, 1);
 
 $( document ).ready(function() {
 
