@@ -4,11 +4,11 @@ import 'aframe-text-component';
 import { Entity } from 'aframe-react';
 import React from 'react';
 
-import getSpherePositions from '../util/sphereMath';
+import getDomePositions from '../util/sphereMath';
 import Image from './Image';
 
 const Dome = props => {
-  const positions = getSpherePositions(props.images.length, 1);
+  const positions = getDomePositions(props.images.length, 1);
 
   return (
     <Entity>
