@@ -18,9 +18,11 @@ FileInfo.prototype.initUrl = function (req) {
           '//' + req.headers.host + options.uploadUrl;
     this.url = this.deleteUrl = baseUrl + encodeURIComponent(this.name);
     Object.keys(options.imageVersions).forEach(function (version) {
+
       if (_existsSync(
           options.uploadDir + '/' + version + '/' + that.name
           )) {
+        console.log('Version ', version);
         that[version + 'Url'] = baseUrl + version + '/' +
                 encodeURIComponent(that.name);
       }

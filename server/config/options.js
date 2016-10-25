@@ -5,7 +5,7 @@ module.exports = {
   tmpDir: basePath + '/tmp',
   publicDir: basePath + '/public',
   uploadDir: basePath + '/public/images',
-  uploadUrl: '/images/',
+  uploadUrl: '/api/images/',
   minFileSize: 1,
   maxFileSize: 10485760, // 10MB
   maxPostSize: 10485760, // 10MB

@@ -9,7 +9,7 @@ var UploadHandler = function(req, res, callback) {
   this.req = req;
   this.res = res;
   this.callback = function(obj) {
-    console.log('Response from CB ', obj);
+    // console.log('Response from CB ', obj);
     this.res.json(obj);
   };
 };
