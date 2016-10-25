@@ -1,7 +1,5 @@
 var express = require('express');
 var app = express();
-var db = require('./server/db/db');
-var Photo = require('./server/db/models/Photo');
 var morgan = require('morgan'); // middleware for logging request details
 var bodyParser = require('body-parser'); // midleware supports unicode encoding of the body
 var requestHandler = require('./server/helpers/requestHandler').router;
