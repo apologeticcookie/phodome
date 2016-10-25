@@ -1,7 +1,6 @@
 import 'aframe';
 import 'aframe-animation-component';
 import 'aframe-text-component';
-import 'babel-polyfill';
 import { Entity, Scene } from 'aframe-react';
 import React from 'react';
 
@@ -9,8 +8,19 @@ import Camera from './Camera';
 import Text from './Text';
 import Sky from './Sky';
 import Image from './Image';
+import Dome from './Dome';
 
 const testImages = [
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
   'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg'
 ];
 
@@ -41,15 +51,7 @@ class PhodomeScene extends React.Component {
 
         <Sky color="#000"/>
 
-        {
-          this.state.images.map((imageUrl, index) => (
-            <Image
-              key={index}
-              src={imageUrl}
-              position={`0 -0.5 ${-3 + (-3 * index)}`}
-            />
-          ))
-        }
+        <Dome images={this.state.images} />
 
         <Text
           text='Welcome to Phodome!'

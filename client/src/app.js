@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PhodomeScene from './components/PhodomeScene';
+import Container from './components/Container';
 
-ReactDOM.render(<PhodomeScene />, document.querySelector('.scene-container'));
+ReactDOM.render(<Container />, document.querySelector('.scene-container'));

@@ -1,9 +1,3 @@
-/*
-References:
-https://www.cmu.edu/biolphys/deserno/pdf/sphere_equi.pdf
-*/
-
-// var Plotly = require('plotly.js');
 
 var createPoint = function(r, theta, phi) {
 
@@ -59,46 +53,5 @@ var domePositions = function(n, r) {
   return spherePositions(2 * n, r).slice(0, n);
 };
 
-// toggle to render sphere or dome
-var number = 250;
-// var testPositions = spherePositions(number, 1);
-var testPositions = domePositions(number, 1);
 
-$( document ).ready(function() {
-
-  var xPos = [];
-  var yPos = [];
-  var zPos = [];
-
-  testPositions.forEach((point) => {
-    xPos.push(point[0]);
-    yPos.push(point[1]);
-    zPos.push(point[2]);
-  });
-
-
-  var trace = {
-    x: xPos, y: yPos, z: zPos,
-    mode: 'markers',
-    marker: {
-      size: 12,
-      line: {
-      color: 'rgba(217, 217, 217, 0.14)',
-      width: 0.5
-      },
-      symbol: 'square',
-      opacity: 0.8},
-    type: 'scatter3d'
-  };
-
-  var data = [trace];
-  var layout = {margin: {
-    l: 0,
-    r: 0,
-    b: 0,
-    t: 0
-  }};
-
-  Plotly.newPlot('myDiv', data, layout);
-
-});
+export default domePositions;
