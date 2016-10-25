@@ -60,7 +60,7 @@ var domePositions = function(n, r) {
 };
 
 // toggle to render sphere or dome
-var number = 1000;
+var number = 250;
 // var testPositions = spherePositions(number, 1);
 var testPositions = domePositions(number, 1);
 
@@ -84,7 +84,9 @@ $( document ).ready(function() {
       size: 12,
       line: {
       color: 'rgba(217, 217, 217, 0.14)',
-      width: 0.5},
+      width: 0.5
+      },
+      symbol: 'square',
       opacity: 0.8},
     type: 'scatter3d'
   };
