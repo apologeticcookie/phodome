@@ -18,7 +18,9 @@ const Dome = props => {
         props.images.map((imageUrl, index) => {
           const x = positions[index][0] * RADIUS;
           const y = positions[index][1] * RADIUS;
-          const z = positions[index][2] * RADIUS;
+
+          // The negative flips all items from behind the camera to in front
+          const z = positions[index][2] * -RADIUS;
           return (
             <Image
             key={index}
