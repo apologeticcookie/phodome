@@ -11,6 +11,13 @@ module.exports = {
   maxPostSize: 10485760, // 10MB
   acceptFileTypes: /.+/i,
   imageTypes: /\.(gif|jpe?g|png|bmp|swf)$/i,
+  imageVersions: {
+    'thumbnails': {
+      width: 80,
+      height: 80
+    }
+  },
+  
   nodeStatic: {
     cache: 3600
   }
