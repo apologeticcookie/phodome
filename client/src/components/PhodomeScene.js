@@ -11,6 +11,16 @@ import Image from './Image';
 import Dome from './Dome';
 
 const testImages = [
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
+  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
   'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg'
 ];
 
