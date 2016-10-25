@@ -4,6 +4,10 @@ import 'aframe-text-component';
 import 'babel-polyfill';
 import { Entity, Scene } from 'aframe-react';
 import React from 'react';
+import IconMenu from 'material-ui/IconMenu';
+import MenuItem from 'material-ui/MenuItem';
+import IconButton from 'material-ui/IconButton';
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 import Camera from './Camera';
 import Text from './Text';
@@ -13,6 +17,20 @@ import Image from './Image';
 const testImages = [
   'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg'
 ];
+
+//Drop down menu to select Home or Upload Image
+const dropDownMenu = () => (
+  <div>
+    <IconMenu
+      iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+      anchorOrigin={{horizontal: 'left', vertical: 'top'}}
+      targetOrigin={{horizontal: 'left', vertical: 'top'}}
+    >
+      <MenuItem primaryText="Upload Image" />
+      <MenuItem primaryText="Home" />
+    </IconMenu>
+  </div>
+);
 
 class PhodomeScene extends React.Component {
   constructor() {
@@ -66,3 +84,4 @@ class PhodomeScene extends React.Component {
 }
 
 export default PhodomeScene;
+export default dropDownMenu;
