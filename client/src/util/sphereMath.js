@@ -29,5 +29,3 @@ var getSpherePositions = function(N, r) {
 };
 
 export default getSpherePositions;
-
-// var testPositions = spherePositions(200, RADIUS);
