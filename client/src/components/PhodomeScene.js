@@ -7,12 +7,15 @@ import React from 'react';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
+import injectTapEventPlugin from 'react-tap-event-plugin';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
 import Camera from './Camera';
 import Text from './Text';
 import Sky from './Sky';
 import Image from './Image';
+
+injectTapEventPlugin();
 
 const testImages = [
   'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg'
@@ -84,4 +87,3 @@ class PhodomeScene extends React.Component {
 }
 
 export default PhodomeScene;
-export default dropDownMenu;
