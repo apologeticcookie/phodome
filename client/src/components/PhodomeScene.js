@@ -5,8 +5,10 @@ import 'babel-polyfill';
 import { Entity, Scene } from 'aframe-react';
 import React from 'react';
 import IconMenu from 'material-ui/IconMenu';
+import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import IconButton from 'material-ui/IconButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 
@@ -20,20 +22,6 @@ injectTapEventPlugin();
 const testImages = [
   'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg'
 ];
-
-//Drop down menu to select Home or Upload Image
-const dropDownMenu = () => (
-  <div>
-    <IconMenu
-      iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
-      anchorOrigin={{horizontal: 'left', vertical: 'top'}}
-      targetOrigin={{horizontal: 'left', vertical: 'top'}}
-    >
-      <MenuItem primaryText="Upload Image" />
-      <MenuItem primaryText="Home" />
-    </IconMenu>
-  </div>
-);
 
 class PhodomeScene extends React.Component {
   constructor() {
