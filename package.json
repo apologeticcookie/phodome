@@ -51,7 +51,11 @@
     "pg": "^6.1.0",
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.24.4",
-    "webpack": "^1.12.9"
+    "webpack": "^1.12.9",
+    "node-static": "*",
+    "morgan": "^1.7.0",    
+    "gm": "*",
+    "formidable": "*"    
   },
   "devDependencies": {
     "babel": "^6.3.13",
