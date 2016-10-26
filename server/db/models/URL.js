@@ -15,4 +15,5 @@ var URL = db.define('url', {
   }
 });
 
+URL.sync();
 module.exports = URL;

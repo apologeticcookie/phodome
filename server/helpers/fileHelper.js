@@ -17,18 +17,23 @@ FileInfo.prototype.initUrl = function (req) {
     var baseUrl = (options.ssl ? 'https:' : 'http:') +
           '//' + req.headers.host + options.uploadUrl;
     this.url = this.deleteUrl = baseUrl + encodeURIComponent(this.name);
-    Object.keys(options.imageVersions).forEach(function (version) {
-
-      if (_existsSync(
-          options.uploadDir + '/' + version + '/' + that.name
-          )) {
-        console.log('Version ', version);
-        that[version + 'Url'] = baseUrl + version + '/' +
-                encodeURIComponent(that.name);
-      }
-    });
   }
 };
+
+FileInfo.prototype.validate = function () {
+  if (options.minFileSize && options.minFileSize > this.size) {
+    this.error = 'File is too small';
+  }
+  if (options.maxFileSize && options.maxFileSize < this.size) {
+    this.error = 'File is too big';
+  }
+  if (!options.acceptFileTypes.test(this.type)) {
+    this.error = 'File type not wrong';
+  }
+
+  return !this.error;
+};
+
 
 
 module.exports = exports = FileInfo;

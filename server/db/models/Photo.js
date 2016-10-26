@@ -11,14 +11,17 @@ var Photo = db.define('photo', {
     type: Sequelize.STRING
   },
   location: {
-  	type:Sequelize.STRING
+
+    type:Sequelize.STRING
   },
   type: {
-  	type:Sequelize.STRING
+    type:Sequelize.STRING
   },
   id_url: {
-  	type:Sequelize.INTEGER
+    type:Sequelize.INTEGER
   }
 });
+
+Photo.sync();
 
 module.exports = Photo;
