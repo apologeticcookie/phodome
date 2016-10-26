@@ -1,4 +1,5 @@
 # Phodome
+[![Stories in Ready](https://badge.waffle.io/apologeticcookie/apologeticcookie.png?label=ready&title=Ready)](https://waffle.io/apologeticcookie/apologeticcookie)
 
 > Phodome allows social media users the ability to upload and view photos with a virtual reality feel.
 
@@ -41,6 +42,25 @@ The express server is contained in app.js, with the react components contained i
 
 Technical work was done to mathematically render the dome positions in the sphere-math folder, and page load speeds were tested via Google PageSpeed Insights, with results placed in the load-speed folder. As a result of page load speed testing, Gzip compression was enabled via the Compression middleware for Express to improve load speeds.
 
+### Front-End Structure
+
+All client code is located inside the `/client` folder. `/client/src/` contains all JavaScript modules (React components and otherwise) that are eventually bundled, by Webpack, into `/client/build/bundle.js`. `/client/src/app.js` serves as the entry point used by Webpack when bundling. `/client/src/components` contains all of the project's React components, while `/client/src/util` contains non-React modules (which is currently only `sphereMath.js`, used for calculating photo positions).
+
+`/client/index.html` is the app's welcome page (completely static), while `/client/app.html` is the actual Phodome VR application that uses `/client/build/bundle.js`. All other static assets are inside `/client/assets`.
+
+#### React Components
+
+Phodome consists of two primary components: the non-VR `<Sidebar>`, which renders the sidebar for user actions (going home and uploading photos), and `<PhodomeScene>`, which contains the entirety of the VR application. `<PhodomeScene>` itself then contains a `<Camera>`, `<Sky>`, and `<Dome>`. `<Dome>` is the container for all `<Image>` components, and `<Dome>` is what makes use of the `sphereMath` module to calculate `<Image>` positions.
+
+### Front-End Testing
+
+Mocha, Chai, and Enzyme are the core of Phodome's front-end testing. Enzyme allows us to selectively render parts of our application and test our React components, but because VR depends on several browser APIs that do not exist in Node, it is necessary to use Karma to run our front-end tests in a real browser environment (Chrome, specifically) rather than in Node. There is additional config inside `.travis.yml` and `karma.conf.js` to ensure this runs smoothly with Travis; see comments inside those files for further explanation.
+
+### Back-End Structure
+
+### Back-End Testing
+
+
 ### Installing Dependencies
 
 a) From within the root directory:
@@ -49,16 +69,44 @@ a) From within the root directory:
 npm install
 ```
 
+A `postinstall` npm script will ensure that Webpack is run and a production bundle.js is generated as soon as install completes.
+
 b) Set up local database:
 > Download [Postgres App](http://postgresapp.com/)
 > Start local database from the Desktop app
 > In the database shell, enter 'create database phodome;'
 
-c) Start local instance of the app in the root directory
+
+### Running the Application Locally (for Development)
+
+a) Start local instance of the app in the root directory
 
 ```sh
-node app.js
+npm run start
 ```
+
+b) In another terminal window, start Webpack watching your files
+
+```sh
+npm run build watch
+```
+
+c) To run client tests, in another terminal window, start Karma
+
+```sh
+npm run test:client
+```
+OR
+```sh
+npm run test:client:watch
+```
+
+d) To run server tests, in another terminal window, start Mocha
+
+```sh
+npm run test:server
+```
+
 
 ### Roadmap
 
