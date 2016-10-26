@@ -20,7 +20,19 @@ class PhodomeScene extends React.Component {
   }
 
   componentDidMount() {
-    // fetch from /api/images using axios
+    axios.get('/api/images')
+      .then(response => (
+        response.data.files
+      ))
+      .then( (images) => {
+        let imageUrls = [];
+        images.forEach(imageObj => {
+          imageUrls.push(imageObj.url);
+        });
+        this.setState({
+          images: imageUrls
+        });
+      });
   }
 
   render () {
