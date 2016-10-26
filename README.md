@@ -69,19 +69,44 @@ a) From within the root directory:
 npm install
 ```
 
+A `postinstall` npm script will ensure that Webpack is run and a production bundle.js is generated as soon as install completes.
+
 b) Set up local database:
 > Download [Postgres App](http://postgresapp.com/)
 > Start local database from the Desktop app
 > In the database shell, enter 'create database phodome;'
 
-c) Start local instance of the app in the root directory
+
+### Running the Application Locally (for Development)
+
+a) Start local instance of the app in the root directory
 
 ```sh
-node app.js
+npm run start
 ```
 
+b) In another terminal window, start Webpack watching your files
 
-### Running the Application Locally
+```sh
+npm run build watch
+```
+
+c) To run client tests, in another terminal window, start Karma
+
+```sh
+npm run test:client
+```
+OR
+```sh
+npm run test:client:watch
+```
+
+d) To run server tests, in another terminal window, start Mocha
+
+```sh
+npm run test:server
+```
+
 
 ### Roadmap
 
