@@ -70,7 +70,8 @@ UploadHandler.prototype.post = function () {
   };
 
   form.uploadDir = options.tmpDir;
-  form.on('fileBegin', function (name, file) {    
+  form.on('fileBegin', function (name, file) { 
+    console.log('On file Begin ');
     tmpFiles.push(file.path);
     var fileInfo = new FileInfo(file, handler.req, true);
     map[path.basename(file.path)] = fileInfo;
@@ -97,7 +98,8 @@ UploadHandler.prototype.post = function () {
       handler.req.socket.destroy();
     }
   }).on('error', function (e) {
-    console.log(e);
+    console.log('On error ', handler.req);
+    console.log('On error ', e);
   }).on('end', finish).parse(handler.req);
 };
 
