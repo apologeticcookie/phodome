@@ -1,6 +1,7 @@
+import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
+import FileListener from './uploadImage';
 
 class DialogBox extends React.Component {
   state = {
@@ -25,22 +26,21 @@ class DialogBox extends React.Component {
       <FlatButton
         label="Submit"
         primary={true}
-        keyboardFocused={true}
         onTouchTap={this.handleClose}
       />,
     ];
 
     return (
       <div>
-        <RaisedButton label="Dialog" onTouchTap={this.handleOpen} />
+        <FlatButton label="Upload Pictures" onTouchTap={this.handleOpen} />
         <Dialog
-          title="Dialog With Actions"
+          title="Upload Pictures"
           actions={actions}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          The actions in this window were passed in as an array of React objects.
+          <FileListener />
         </Dialog>
       </div>
     );
