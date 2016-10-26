@@ -22,7 +22,7 @@ const Dome = props => {
           const z = positions[index][2] * -RADIUS;
           return (
             <Image
-            key={index}
+            key={imageUrl}
             src={imageUrl}
             position={`${x} ${y} ${z}`}
             />
