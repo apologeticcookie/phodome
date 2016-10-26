@@ -5,8 +5,8 @@ const Image = props => (
   <Entity
     geometry={{
       primitive: 'box',
-      width: 1.5,
-      height: 1.5,
+      width: 3,
+      height: 3,
       depth: 0
     }}
     position={props.position}
