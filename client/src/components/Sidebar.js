@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import FileListener from './uploadImage';
 import DialogBox from './DialogBox';
+import FlatButton from 'material-ui/FlatButton';
 
 injectTapEventPlugin();
 
@@ -26,11 +27,12 @@ class Sidebar extends React.Component {
     return (
       <MuiThemeProvider>  
         <div>
-          <a href="/"><MenuItem>Home</MenuItem></a>
-          <MenuItem onClick={this.handleToggle}>Upload Image</MenuItem>
-          <DialogBox>
-            <FileListener />
-          </DialogBox>
+          <a href="/"><MenuItem><FlatButton>Home</FlatButton></MenuItem></a>
+          <MenuItem onClick={this.handleToggle}>
+            <DialogBox>
+              <FileListener />
+            </DialogBox>
+          </MenuItem>
         </div>
       </MuiThemeProvider>
     );
