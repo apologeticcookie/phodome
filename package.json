@@ -39,6 +39,7 @@
     "aframe-bmfont-text-component": "^0.1.4",
     "aframe-react": "^3.2.3",
     "aframe-text-component": "^0.3.0",
+    "axios": "^0.15.2",
     "babel-core": "^6.3.15",
     "babel-loader": "^6.2.0",
     "babel-polyfill": "^6.3.14",
