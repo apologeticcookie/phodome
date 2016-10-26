@@ -16,7 +16,7 @@ router.route('/images/:name')
 
 router.route('/images')
 .get( function(req, res) {
-  console.log('You all requested image ' + req.params.name + req.url);
+  console.log('in get /images You all requested image ' + req.params.name + req.url);
   var handler = new UploadHandler(req, res);
   handler.get();
   // res.send('You requested image ', req.params.name);
@@ -24,7 +24,7 @@ router.route('/images')
 
 router.route('/rooms/:name')
 .get( function(req, res) {
-  console.log('You all requested image ' + req.params.name + req.url + ' ' + req.params.name);
+  console.log('In get /rooms/:name You all requested image ' + req.params.name + req.url + ' ' + req.params.name);
   var handler = new UploadHandler(req, res);
   handler.get();
   // res.send('You requested image ', req.params.name);
@@ -33,7 +33,7 @@ router.route('/rooms/:name')
 
 router.route('/images')
 .post( function(req, res) {
-  console.log('You all requested image ' + req.params.name + req.url);
+  console.log('In Post /images You posted image ' + req.url);
   var handler = new UploadHandler(req, res);
   handler.post();
   // res.send('You requested image ', req.params.name);
