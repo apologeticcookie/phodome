@@ -22,7 +22,10 @@ Phodome
 
 ## Sub-Heading ##
 > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
-Phodome allows social media users the ability to upload and view photos with a virtual reality feel.
+
+See your photos around you, truly.
+
+<!-- Phodome allows social media users the ability to upload and view photos with a virtual reality feel. -->
 
 ## Summary ##
 > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
