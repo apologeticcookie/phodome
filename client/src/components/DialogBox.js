@@ -18,12 +18,7 @@ class DialogBox extends React.Component {
   render() {
     const actions = [
       <FlatButton
-        label="Cancel"
-        primary={true}
-        onTouchTap={this.handleClose}
-      />,
-      <FlatButton
-        label="Submit"
+        label="OK"
         primary={true}
         onTouchTap={this.handleClose}
       />,

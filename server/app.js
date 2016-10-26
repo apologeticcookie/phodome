@@ -19,7 +19,7 @@ app.use(allowCrossDomain);
 app.use(compression());
 app.use('/api', requestHandler);
 
-app.use(express.static(__dirname + '/client'));
+app.use(express.static(__dirname + './../client'));
 
 app.listen(process.env.PORT || 9999, function() {
   console.log(`listening on port ${process.env.PORT || 9999}`);
