@@ -7,9 +7,8 @@ import React from 'react';
 import getDomePositions from '../util/sphereMath';
 import Image from './Image';
 
-const RADIUS = 6;
-
 const Dome = props => {
+  const RADIUS = 4 + (Math.floor(props.images.length / 8)); // This is pretty arbitrary
   const positions = getDomePositions(props.images.length, 1);
 
   return (
