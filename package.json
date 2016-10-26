@@ -56,7 +56,9 @@
     "pg": "^6.1.0",
     "pg-hstore": "^2.3.2",
     "react": "^15.3.2",
+    "react-addons-css-transition-group": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-fine-uploader": "^0.1.1",
     "react-tap-event-plugin": "^1.0.0",
     "sequelize": "^3.24.4",
     "webpack": "^1.12.9"
