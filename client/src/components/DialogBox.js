@@ -1,7 +1,6 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import FileListener from './uploadImage';
 
 class DialogBox extends React.Component {
   state = {
@@ -40,11 +39,15 @@ class DialogBox extends React.Component {
           open={this.state.open}
           onRequestClose={this.handleClose}
         >
-          <FileListener />
+          {this.props.children}
         </Dialog>
       </div>
     );
   }
 }
+
+DialogBox.propTypes = {
+  children: React.PropTypes.any
+};
 
 export default DialogBox;
