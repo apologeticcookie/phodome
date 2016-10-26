@@ -2,12 +2,17 @@ language: node_js
 node_js:
   - '4.5.0'
 
+# Tells Travis that we're going to be using postgres
 services:
   - postgresql
 
+# Creates our postgres database so that our server + tests work properly
+# on Travis
 before_script:
   - psql -c 'create database phodome;' -U postgres
 
+# This tells Travis that we need Chrome
+# https://swizec.com/blog/how-to-run-javascript-tests-in-chrome-on-travis/swizec/6647
 before_install:
   - export CHROME_BIN=chromium-browser
   - export DISPLAY=:99.0
