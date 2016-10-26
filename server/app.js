@@ -3,7 +3,7 @@ var app = express();
 var morgan = require('morgan'); // middleware for logging request details
 var bodyParser = require('body-parser'); // middleware supports unicode encoding of the body
 var compression = require('compression'); // middleware for gzip compression
-var requestHandler = require('./server/helpers/requestHandler').router;
+var requestHandler = require('./helpers/requestHandler').router;
 
 var allowCrossDomain = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
