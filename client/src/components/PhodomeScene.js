@@ -53,11 +53,6 @@ class PhodomeScene extends React.Component {
 
         <Dome images={this.state.images} />
 
-        <Text
-          text='Welcome to Phodome!'
-          color='#DADADA'
-          position='-1.75 1 -3'/>
-
         <Entity light={{type: 'ambient', color: '#888'}}/>
         <Entity light={{type: 'directional', intensity: 0.5}} position='-1 1 0'/>
         <Entity light={{type: 'directional', intensity: 1}} position='1 1 0'/>
