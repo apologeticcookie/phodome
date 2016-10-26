@@ -3,6 +3,7 @@ import 'aframe-animation-component';
 import 'aframe-text-component';
 import { Entity, Scene } from 'aframe-react';
 import React from 'react';
+import axios from 'axios';
 
 import Camera from './Camera';
 import Text from './Text';
@@ -10,34 +11,30 @@ import Sky from './Sky';
 import Image from './Image';
 import Dome from './Dome';
 
-const testImages = [
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg'
-];
-
 class PhodomeScene extends React.Component {
   constructor() {
     super();
     this.state = {
-      color: 'red',
-      images: testImages
+      images: []
     };
   }
 
-  changeColor() {
-    const colors = ['red', 'orange', 'yellow', 'green', 'blue'];
-    this.setState({
-      color: colors[Math.floor(Math.random() * colors.length)]
-    });
+  componentDidMount() {
+    // As per the React docs, any ajax calls should be made inside componentDidMount
+    // rather than inside the constructor
+    axios.get('/api/images')
+      .then(response => (
+        response.data.files
+      ))
+      .then( (images) => {
+        let imageUrls = [];
+        images.forEach(imageObj => {
+          imageUrls.push(imageObj.url);
+        });
+        this.setState({
+          images: imageUrls
+        });
+      });
   }
 
   render () {
@@ -53,14 +50,7 @@ class PhodomeScene extends React.Component {
 
         <Dome images={this.state.images} />
 
-        <Text
-          text='Welcome to Phodome!'
-          color='#DADADA'
-          position='-1.75 1 -3'/>
-
-        <Entity light={{type: 'ambient', color: '#888'}}/>
-        <Entity light={{type: 'directional', intensity: 0.5}} position='-1 1 0'/>
-        <Entity light={{type: 'directional', intensity: 1}} position='1 1 0'/>
+        <Entity light={{type: 'ambient', color: '#888', intensity: 2}}/>
 
       </Scene>
     );
