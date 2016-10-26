@@ -1,4 +1,6 @@
-/*html {
+/*
+
+html {
   background: #0D3632;
 }
 
@@ -9,17 +11,18 @@ img {
   height: 400px
 }
 
-.phodome {
+.title {
   text-align: center;
-  font-family: 'Indie Flower', cursive;
+  font-family: 'Abhaya Libre', serif;
   font-size: 160px;
-  color: white;
+  color: black;
 }
 
 .link {
   margin-left: 470px;
   text-align: center;
   font-size: 80px;
+  font-family: 'Abhaya Libre', serif;
   color: white;
 }*/
 
