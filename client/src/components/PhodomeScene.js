@@ -6,7 +6,6 @@ import React from 'react';
 import axios from 'axios';
 
 import Camera from './Camera';
-import Text from './Text';
 import Sky from './Sky';
 import Image from './Image';
 import Dome from './Dome';
