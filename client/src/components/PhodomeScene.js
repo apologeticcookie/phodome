@@ -3,58 +3,31 @@ import 'aframe-animation-component';
 import 'aframe-text-component';
 import { Entity, Scene } from 'aframe-react';
 import React from 'react';
-import axios from 'axios';
 
 import Camera from './Camera';
-import Text from './Text';
 import Sky from './Sky';
 import Image from './Image';
 import Dome from './Dome';
 
-class PhodomeScene extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      images: []
-    };
-  }
+const PhodomeScene = ({images}) => (
+  <Scene>
+    <Camera>
+      <a-cursor
+        animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150">
+      </a-cursor>
+    </Camera>
 
-  componentDidMount() {
-    // As per the React docs, any ajax calls should be made inside componentDidMount
-    // rather than inside the constructor
-    axios.get('/api/images')
-      .then(response => (
-        response.data.files
-      ))
-      .then( (images) => {
-        let imageUrls = [];
-        images.forEach(imageObj => {
-          imageUrls.push(imageObj.url);
-        });
-        this.setState({
-          images: imageUrls
-        });
-      });
-  }
+    <Sky color="#000"/>
 
-  render () {
-    return (
-      <Scene>
-        <Camera>
-          <a-cursor
-            animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150">
-          </a-cursor>
-        </Camera>
+    <Dome images={images} />
 
-        <Sky color="#000"/>
+    <Entity light={{type: 'ambient', color: '#888', intensity: 2}}/>
 
-        <Dome images={this.state.images} />
+  </Scene>
+);
 
-        <Entity light={{type: 'ambient', color: '#888', intensity: 2}}/>
-
-      </Scene>
-    );
-  }
-}
+PhodomeScene.propTypes = {
+  images: React.PropTypes.array.isRequired
+};
 
 export default PhodomeScene;

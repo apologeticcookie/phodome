@@ -8,7 +8,7 @@ import getDomePositions from '../util/sphereMath';
 import Image from './Image';
 
 const Dome = props => {
-  const RADIUS = 4 + (Math.floor(props.images.length / 8)); // This is pretty arbitrary
+  const RADIUS = 4 + (Math.floor(props.images.length / 4)); // This is pretty arbitrary
   const positions = getDomePositions(props.images.length, 1);
 
   return (
@@ -22,7 +22,7 @@ const Dome = props => {
           const z = positions[index][2] * -RADIUS;
           return (
             <Image
-            key={index}
+            key={imageUrl}
             src={imageUrl}
             position={`${x} ${y} ${z}`}
             />
