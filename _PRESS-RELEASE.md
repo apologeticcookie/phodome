@@ -42,7 +42,7 @@ The virtual reality market is growing exponentially and we believe that Phodome 
 
 ## How to Get Started ##
 > Describe how easy it is to get started.
-In three steps you can be sharing your life with your friends. The first step is creating an account. The second step is uploading pictures. The third step is organizing them adn then you are all set.
+In two easy steps you can be sharing your photos with your friends. The first step is uploading the pictures you want to share and the second step is organizing them.
 
 ## Customer Quote ##
 > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
