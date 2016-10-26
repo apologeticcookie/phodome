@@ -30,14 +30,16 @@
 
 Phodome app is deployed on Heroku, and is built using the following tech stack:
 
-Design language: [Google Material Design](https://material.google.com) (via [Material-UI for React](http://www.material-ui.com/))
-Front-end framework: [React](https://facebook.github.io/react/)
-Web-based VR framework: [Aframe](https://aframe.io/)
-Back-end framework: [Express](https://expressjs.com/)
-Server: [Node](https://nodejs.org)
-Testing Frameworks: [Travis CI](https://travis-ci.org/), [Mocha](https://mochajs.org/), [Chai](http://chaijs.com/), [Karma](https://karma-runner.github.io), [Enzyme](http://airbnb.io/enzyme/)
+Design language: [Google Material Design](https://material.google.com) (via [Material-UI for React](http://www.material-ui.com/))  
+Front-end framework: [React](https://facebook.github.io/react/)  
+Web-based VR framework: [Aframe](https://aframe.io/)  
+Back-end framework: [Express](https://expressjs.com/)  
+Server: [Node](https://nodejs.org)  
+Testing Frameworks: [Travis CI](https://travis-ci.org/), [Mocha](https://mochajs.org/), [Chai](http://chaijs.com/), [Karma](https://karma-runner.github.io), [Enzyme](http://airbnb.io/enzyme/)  
 
+The express server is contained in app.js, with the react components contained in the client folder. The test files are seperated neatly into test/client and test/server in the test folders, and the server and db software is contained in the server folder.
 
+Technical work was done to mathematically render the dome positions in the sphere-math folder, and page load speeds were tested via Google PageSpeed Insights, with results placed in the load-speed folder. As a result of page load speed testing, Gzip compression was enabled via the Compression middleware for Express to improve load speeds.
 
 ### Installing Dependencies
 
