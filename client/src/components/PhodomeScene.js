@@ -20,6 +20,8 @@ class PhodomeScene extends React.Component {
   }
 
   componentDidMount() {
+    // As per the React docs, any ajax calls should be made inside componentDidMount
+    // rather than inside the constructor
     axios.get('/api/images')
       .then(response => (
         response.data.files
