@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "npm run build:prod",
-    "start": "node app.js",
+    "start": "node ./server/app.js",
     "test": "npm run test:client && npm run test:server",
     "test:client": "karma start --single-run",
     "test:client:watch": "karma start",
