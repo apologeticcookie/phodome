@@ -1,4 +1,4 @@
-html {
+/*html {
   background: #0D3632;
 }
 
@@ -21,4 +21,8 @@ img {
   text-align: center;
   font-size: 80px;
   color: white;
+}*/
+
+.muidocs-icon-custom-github:before {
+    content: "\e625";
 }
