@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import UploadComponent from './Gallery'
 import CancelButton from 'react-fine-uploader/components/cancel-button'
 import FineUploaderTraditional from 'react-fine-uploader'
 import Thumbnail from 'react-fine-uploader/components/thumbnail'
@@ -7,7 +8,7 @@ import Thumbnail from 'react-fine-uploader/components/thumbnail'
 const uploader = new FineUploaderTraditional({
    options: {
       request: {
-         endpoint: 'my/upload/endpoint'
+         endpoint: '/api/images'
       }
    }
 });
@@ -45,14 +46,7 @@ class FileListener extends Component {
   render() {
     return (
       <div>
-        {
-          this.state.submittedFiles.map(id => {
-            <div key={ id }>
-              <Thumbnail id={ id } uploader={ uploader } />
-              <CancelButton id={ id } uploader={ uploader } />
-            </div>
-          })
-        }
+        <UploadComponent />
       </div>
     )
   }
