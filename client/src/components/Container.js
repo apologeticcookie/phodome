@@ -3,9 +3,9 @@ import PhodomeScene from './PhodomeScene';
 import Sidebar from './Sidebar';
 
 // This allows our sidebar and phodomeScene on the same screen
-const Container = () => (
+const Container = (props) => (
     <div>
-      <Sidebar />
+      <Sidebar toggleDemo={props.toggleDemo} />
       <PhodomeScene />
     </div>
 );

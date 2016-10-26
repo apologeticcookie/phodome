@@ -1,13 +1,13 @@
 import React from 'react';
-import HomePage from './components/HomePage';
-import Container from './components/Container';
+import HomePage from './HomePage';
+import Container from './Container';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state({
+    this.state = {
       showHomePage: true
-    });
+    };
 
     this.toggleDemo = this.toggleDemo.bind(this);
   }
@@ -19,9 +19,9 @@ class App extends React.Component {
   }
 
   render() {
-    this.state.showHomePage ?
-    <HomePage toggleDemo={this.toggleDemo}/> :
-    <ContainertoggleDemo={this.toggleDemo}/>
+    return this.state.showHomePage ?
+    (<HomePage toggleDemo={this.toggleDemo}/>) :
+    (<Container toggleDemo={this.toggleDemo}/>);
   }
 }
 

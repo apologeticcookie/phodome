@@ -5,7 +5,7 @@ require('babel-polyfill');
 var IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
 var ENTRY_POINTS = [
-  './client/src/app'
+  './client/src/index'
 ];
 
 var JS_LOADERS = [

@@ -28,7 +28,7 @@ class Sidebar extends React.Component {
     return (
       <MuiThemeProvider>  
         <div>
-          <a href="/"><MenuItem>Home</MenuItem></a>
+          <MenuItem><a onClick={this.props.toggleDemo}>Home</a></MenuItem>
           <MenuItem>Upload Image</MenuItem>
         </div>
       </MuiThemeProvider>
