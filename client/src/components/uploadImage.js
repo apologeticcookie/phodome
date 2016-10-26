@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import CancelButton from 'react-fine-uploader/components/cancel-button'
+import Gallery from 'react-fine-uploader/components/gallery'
+// import CancelButton from 'react-fine-uploader/components/cancel-button'
 import FineUploaderTraditional from 'react-fine-uploader'
-import Thumbnail from 'react-fine-uploader/components/thumbnail'
+// import Thumbnail from 'react-fine-uploader/components/thumbnail'
 
 const uploader = new FineUploaderTraditional({
    options: {
