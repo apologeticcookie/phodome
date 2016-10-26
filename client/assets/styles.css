@@ -23,6 +23,11 @@ img {
   color: white;
 }*/
 
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 48px;
+}
+
 @font-face {
   font-family: 'material-ui-icons';
   src: url('fonts/material-ui-icons.eot');
