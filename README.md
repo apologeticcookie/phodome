@@ -10,13 +10,13 @@
 
 ## Table of Contents
 
-1. [Usage](#Usage)
-1. [Requirements](#requirements)
-1. [Development](#development)
-    1. [Installing Dependencies](#installing-dependencies)
-    1. [Tasks](#tasks)
-1. [Team](#team)
-1. [Contributing](#contributing)
+1. [Usage](#usage)
+2. [Requirements](#requirements)
+3. [Development](#development)
+    a. [Installing Dependencies](#installing-dependencies)
+    b. [Tasks](#tasks)
+4. [Team](#team)
+5. [Contributing](#contributing)
 
 ## Usage
 
@@ -24,9 +24,20 @@
 
 ## Requirements
 
-> The app is designed to be used as a single page web application. For running the application locally, see instructions below.
+> The app is designed to be used as a single page web application. For development and running the application locally, see instructions below.
 
 ## Development
+
+Phodome app is deployed on Heroku, and is built using the following tech stack:
+
+Design language: [Google Material Design](https://material.google.com) (via [Material-UI for React](http://www.material-ui.com/))
+Front-end framework: [React](https://facebook.github.io/react/)
+Web-based VR framework: [Aframe](https://aframe.io/)
+Back-end framework: [Express](https://expressjs.com/)
+Server: [Node](https://nodejs.org)
+Testing Frameworks: [Travis CI](https://travis-ci.org/), [Mocha](https://mochajs.org/), [Chai](http://chaijs.com/), [Karma](https://karma-runner.github.io), [Enzyme](http://airbnb.io/enzyme/)
+
+
 
 ### Installing Dependencies
 
