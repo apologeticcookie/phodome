@@ -3,6 +3,7 @@ import 'aframe-animation-component';
 import 'aframe-text-component';
 import { Entity, Scene } from 'aframe-react';
 import React from 'react';
+import axios from 'axios';
 
 import Camera from './Camera';
 import Text from './Text';
@@ -10,34 +11,16 @@ import Sky from './Sky';
 import Image from './Image';
 import Dome from './Dome';
 
-const testImages = [
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg',
-  'https://s3-us-west-2.amazonaws.com/s.cdpn.io/336999/me.jpg'
-];
-
 class PhodomeScene extends React.Component {
   constructor() {
     super();
     this.state = {
-      color: 'red',
-      images: testImages
+      images: []
     };
   }
 
-  changeColor() {
-    const colors = ['red', 'orange', 'yellow', 'green', 'blue'];
-    this.setState({
-      color: colors[Math.floor(Math.random() * colors.length)]
-    });
+  componentDidMount() {
+    // fetch from /api/images using axios
   }
 
   render () {
