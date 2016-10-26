@@ -1,18 +1,25 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import CancelButton 'react-fine-uploader/components/cancel-button'
+import CancelButton from 'react-fine-uploader/components/cancel-button'
 import FineUploaderTraditional from 'react-fine-uploader'
-import Thumbnail 'react-fine-uploader/components/thumbnail'
+import Thumbnail from 'react-fine-uploader/components/thumbnail'
 
-const uploader = new FineUploader({
+const uploader = new FineUploaderTraditional({
    options: {
       request: {
          endpoint: 'my/upload/endpoint'
       }
    }
-})
+});
 
-export default class FileListener extends Component {
+const isFileGone = status => {
+  return [
+    'canceled',
+    'deleted',
+  ].indexOf(status) >= 0
+}
+
+class FileListener extends Component {
   constructor() {
     super()
     this.state = {
@@ -44,16 +51,11 @@ export default class FileListener extends Component {
               <Thumbnail id={ id } uploader={ uploader } />
               <CancelButton id={ id } uploader={ uploader } />
             </div>
-          ))
+          })
         }
       </div>
     )
   }
 }
 
-const isFileGone = status => {
-  return [
-    'canceled',
-    'deleted',
-  ].indexOf(status) >= 0
-}
+export default FileListener;
