@@ -32,13 +32,15 @@ body {
 }
 
 h1 {
-  margin: 30px;
-  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  /*text-align: center;*/
 }
 
 p {
-  margin: 0px;
-  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 20px;
+  /*text-align: center;*/
 }
 
 @font-face {
@@ -71,9 +73,13 @@ p {
   content: "\e625";
 }
 
+.homepage {
+  text-align: center;
+}
+
 #domeViz {
   position: absolute;
-  top: -10%;
+  top: -7.5%;
   z-index: -1;
 }
 
