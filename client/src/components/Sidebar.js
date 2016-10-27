@@ -27,7 +27,7 @@ class Sidebar extends React.Component {
     return (
       <MuiThemeProvider>
         <div>
-          <a href="/"><MenuItem><FlatButton>Home</FlatButton></MenuItem></a>
+          <a onClick={this.props.toggleDemo}><MenuItem><FlatButton>Home</FlatButton></MenuItem></a>
           <MenuItem onClick={this.handleToggle}>
             <DialogBox>
               <FileUploader handleUploadComplete={this.props.handleUploadComplete} />

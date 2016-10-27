@@ -6,7 +6,7 @@ require('babel-polyfill');
 var IS_PRODUCTION = process.argv.indexOf('--prod') !== -1;
 
 var ENTRY_POINTS = [
-  './client/src/app'
+  './client/src/index'
 ];
 
 var JS_LOADERS = [

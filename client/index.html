@@ -1,33 +1,30 @@
-
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Welcome</title>
-    <link href="/assets/styles.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Phodome</title>
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+     <link href="/assets/styles.css" rel="stylesheet">
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+      <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   </head>
-
   <body>
-    <div id="app">
-
-      <div>
-        <header class="title">Phodome</header>
-      </div>
-
-        <a class="link" href="/app.html">Check it out now!</a>
-      </div>
-
-      <div id="myDiv" style="width:500px; height:500px"></div>
-      <script src="sphereMath.js"></script>
-
-      <div class="scene-container" style="height: 100%; width: 100%"></div>
-      <!-- <script src="/build/bundle.js"></script> -->
-    </div>
+    <div class="app" style="height: 100%; width: 100%"></div>
+    <script src="/build/bundle.js"></script> 
+    <script src="/src/util/domeViz.js"></script>   
   </body>
+  <script>
+    var WebFontConfig = {
+      google: { families: [ 'Roboto:400,300,500:latin' ] }
+    };
+    (function() {
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })();
+  </script>
 </html>

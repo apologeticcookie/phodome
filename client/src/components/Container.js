@@ -6,7 +6,6 @@ import axios from 'axios';
 class Container extends React.Component {
   constructor() {
     super();
-
     this.state = {
       images: []
     };
@@ -42,7 +41,7 @@ class Container extends React.Component {
   render() {
     return (
       <div>
-        <Sidebar handleUploadComplete={this.handleUploadComplete} />
+        <Sidebar handleUploadComplete={this.handleUploadComplete} toggleDemo={this.props.toggleDemo} />
         <PhodomeScene images={this.state.images} />
       </div>
     );
