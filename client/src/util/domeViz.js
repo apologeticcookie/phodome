@@ -83,7 +83,7 @@ var plotlyConfig = {
     frameMargins: true,
 
     // mousewheel or two-finger scroll zooms the plot
-    scrollZoom: true,
+    scrollZoom: false,
 
     // double click interaction (false, 'reset', 'autosize' or 'reset+autosize')
     doubleClick: 'reset+autosize',
@@ -181,6 +181,24 @@ $( document ).ready(function() {
   };
 
   var data = [photos, person];
+
+  var d3 = Plotly.d3;
+  var WIDTH_IN_PERCENT_OF_PARENT = 100;
+  var HEIGHT_IN_PERCENT_OF_PARENT = 30;
+
+  var gd3 = d3.select('#domeViz')
+    .append('div')
+    .style({
+      'position': 'absolute',
+      'width': WIDTH_IN_PERCENT_OF_PARENT + '%',
+      'margin-left': (100 - WIDTH_IN_PERCENT_OF_PARENT) / 2 + '%',
+
+      'height': HEIGHT_IN_PERCENT_OF_PARENT + 'vh',
+      'margin-top': 0 //(100 - HEIGHT_IN_PERCENT_OF_PARENT) / 2 + 'vh'
+    });
+
+  var gd = gd3.node();
+
   var layout = {
     margin: {
       l: 0,
@@ -196,6 +214,10 @@ $( document ).ready(function() {
     showlegend: false  
   };
 
-  Plotly.newPlot('myDiv', data, layout, plotlyConfig);
+  Plotly.newPlot(gd, data, layout, plotlyConfig);
+  
+  window.onresize = function() {
+    Plotly.Plots.resize(gd);
+  };
 
 });

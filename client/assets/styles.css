@@ -28,7 +28,17 @@ img {
 
 body {
   font-family: 'Roboto', sans-serif;
-  font-size: 48px;
+  font-size: 30px;
+}
+
+h1 {
+  margin: 0px;
+  text-align: center;
+}
+
+p {
+  margin: 0px;
+  text-align: center;
 }
 
 @font-face {
@@ -58,5 +68,34 @@ body {
 }
 
 .muidocs-icon-custom-github:before {
-    content: "\e625";
+  content: "\e625";
 }
+
+#domeViz {
+  position: absolute;
+  top: -10%;
+  z-index: -1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
