@@ -38,7 +38,7 @@ UploadHandler.prototype.get = function () {
         files.push(fileInfo);
       }
     });
-    handler.callback({files: files});
+    handler.callback({files: files, success: true});
   });
 };
 
@@ -65,7 +65,7 @@ UploadHandler.prototype.post = function () {
         fileInfo.initUrl(handler.req);
       });
       photoController.insertPhoto(files[0]);
-      handler.callback({files: files}, redirect);
+      handler.callback({files: files, success: true}, redirect);
     }
   };
 

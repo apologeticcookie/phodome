@@ -58,7 +58,29 @@ Mocha, Chai, and Enzyme are the core of Phodome's front-end testing. Enzyme allo
 
 ### Back-End Structure
 
+The structure and the idea of the server is a mix of the implementation of live server and what we have learnt so far during our mini sprints at hack reactor.
+
+It uses express framework with middlewares like boody-parser, formidable, gm, node-static.
+
+All the server files are under /server
+/config - holds all the configuration files . since the server here mainly a file server this holds information on the type of files it has to hold , the maximum file server.
+
+/db/models - holds the db information of the URL and Photo table
+
+/db/controllers - For as for now the controller inserts photo information every time a post request is made.
+
+/helpers/fileHelper.js - initURL .. sets up the retun file object for the response validate .. checks if the file is with in the limits of the configuration defined.
+
+/helpers/requestHandler.js -- holds the route path for all the various end points.
+
+/helpers/uploadHandler.js -- holds the actual implementation for the get and post post uses formidable library for recieving files. 
+At first the file chunks are saved in the tmp folder and then moved to actual public/images
+
 ### Back-End Testing
+
+Server testing is basically endpoint testing , tests have been added for various get requests.
+For some reason the post doesnt work with tests . But it works using postman app and from the client side library.
+
 
 
 ### Installing Dependencies
