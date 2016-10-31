@@ -18,7 +18,7 @@ var UploadHandler = function(req, res, callback) {
 
 
 /**
- * Get all upload files
+ * Get all uploaded files
  *
  */
 UploadHandler.prototype.get = function () {
@@ -43,7 +43,9 @@ UploadHandler.prototype.get = function () {
 };
 
 /**
-*  Below source code is inspired from the live server implementation
+*  Below source code uses formidable library for implementing file server
+* Once the file is uploaded successfully it makes an entry in the DB for the photo information
+* File server upload and retrieve is borrowed from the live Server implementation from github 
 **/
 
 
@@ -70,7 +72,7 @@ UploadHandler.prototype.post = function () {
   };
 
   form.uploadDir = options.tmpDir;
-  form.on('fileBegin', function (name, file) { 
+  form.on('fileBegin', function (name, file) {
     console.log('On file Begin ');
     tmpFiles.push(file.path);
     var fileInfo = new FileInfo(file, handler.req, true);
