@@ -48,4 +48,8 @@ class Container extends React.Component {
   }
 }
 
+Container.propTypes = {
+  toggleDemo: React.PropTypes.func.isRequired
+};
+
 export default Container;
