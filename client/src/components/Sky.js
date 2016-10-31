@@ -10,7 +10,7 @@ import React from 'react';
 
 const Sky = props => (
   <Entity
-    material={{ src: 'url(assets/milkyway.jpg)'}}
+    material={{ src: 'url(assets/skybox.jpg)'}}
     geometry={{ primitive: 'sphere', radius: 100 }}
     scale="1 1 -1"/>
 );
