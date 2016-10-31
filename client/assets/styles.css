@@ -78,7 +78,22 @@ p {
 }
 
 #domeViz {
+  display: none;
   position: absolute;
   top: 10%;
   z-index: -1;
+}
+
+.dome-viz-img {
+  max-width: 100%;
+}
+
+@media (min-width: 40em) {
+  #domeViz {
+    display: block;
+  }
+
+  .dome-viz-img {
+    display: none;
+  }
 }

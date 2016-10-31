@@ -67,68 +67,68 @@ var testPositions = domePositions(number, 1);
 // Plotly configurations
 var plotlyConfig = {
 
-    // no interactivity, for export or image generation
-    staticPlot: false,
+  // no interactivity, for export or image generation
+  staticPlot: false,
 
-    // we can edit titles, move annotations, etc
-    editable: false,
+  // we can edit titles, move annotations, etc
+  editable: false,
 
-    // plot will respect layout.autosize=true and infer its container size
-    autosizable: true,
+  // plot will respect layout.autosize=true and infer its container size
+  autosizable: true,
 
-    // if we DO autosize, do we fill the container or the screen?
-    fillFrame: true,
+  // if we DO autosize, do we fill the container or the screen?
+  fillFrame: true,
 
-    // if we DO autosize, set the frame margins in percents of plot size
-    frameMargins: true,
+  // if we DO autosize, set the frame margins in percents of plot size
+  frameMargins: true,
 
-    // mousewheel or two-finger scroll zooms the plot
-    scrollZoom: false,
+  // mousewheel or two-finger scroll zooms the plot
+  scrollZoom: false,
 
-    // double click interaction (false, 'reset', 'autosize' or 'reset+autosize')
-    doubleClick: 'reset+autosize',
+  // double click interaction (false, 'reset', 'autosize' or 'reset+autosize')
+  doubleClick: 'reset+autosize',
 
-    // new users see some hints about interactivity
-    showTips: false,
+  // new users see some hints about interactivity
+  showTips: false,
 
-    // link to open this plot in plotly
-    showLink: false,
+  // link to open this plot in plotly
+  showLink: false,
 
-    // if we show a link, does it contain data or just link to a plotly file?
-    sendData: false,
+  // if we show a link, does it contain data or just link to a plotly file?
+  sendData: false,
 
-    // text appearing in the sendData link
-    linkText: '',
+  // text appearing in the sendData link
+  linkText: '',
 
-    // false or function adding source(s) to linkText <text>
-    showSources: false,
+  // false or function adding source(s) to linkText <text>
+  showSources: false,
 
-    // display the mode bar (true, false, or 'hover')
-    displayModeBar: false,
+  // display the mode bar (true, false, or 'hover')
+  displayModeBar: false,
 
-    // remove mode bar button by name
-    // (see ./components/modebar/buttons.js for the list of names)
-    modeBarButtonsToRemove: [],
+  // remove mode bar button by name
+  // (see ./components/modebar/buttons.js for the list of names)
+  modeBarButtonsToRemove: [],
 
-    // add mode bar button using config objects
-    // (see ./components/modebar/buttons.js for list of arguments)
-    modeBarButtonsToAdd: [],
+  // add mode bar button using config objects
+  // (see ./components/modebar/buttons.js for list of arguments)
+  modeBarButtonsToAdd: [],
 
-    // fully custom mode bar buttons as nested array,
-    // where the outer arrays represents button groups, and
-    // the inner arrays have buttons config objects or names of default buttons
-    // (see ./components/modebar/buttons.js for more info)
-    modeBarButtons: false,
+  // fully custom mode bar buttons as nested array,
+  // where the outer arrays represents button groups, and
+  // the inner arrays have buttons config objects or names of default buttons
+  // (see ./components/modebar/buttons.js for more info)
+  modeBarButtons: false,
 
-    // add the plotly logo on the end of the mode bar
-    displaylogo: false,
+  // add the plotly logo on the end of the mode bar
+  displaylogo: false,
 
-    // URL to topojson files used in geo charts
-    topojsonURL: 'https://cdn.plot.ly/',
+  // URL to topojson files used in geo charts
+  topojsonURL: 'https://cdn.plot.ly/',
 
-    // Turn all console logging on or off (errors will be thrown)
-    // This should ONLY be set via Plotly.setPlotConfig
-    logging: true,
+  // Turn all console logging on or off (errors will be thrown)
+  // This should ONLY be set via Plotly.setPlotConfig
+  logging: true,
 };
 
 
@@ -211,13 +211,22 @@ $( document ).ready(function() {
       yaxis: axisTemplate,
       zaxis: axisTemplate
     },
-    showlegend: false  
+    showlegend: false
   };
 
   Plotly.newPlot(gd, data, layout, plotlyConfig);
-  
+
   window.onresize = function() {
-    Plotly.Plots.resize(gd);
+    // Ensure Plotly only does something if screen is big enough for it to be
+    // rendered anyway
+    // If this check does not exist, Plotly throws an error, probably because
+    // it's trying to render to a DOM node that has display: none on it
+    // The screen size to check for should match up with the size defined in
+    // styles.css (the breakpoint between the viz being displayed, and the img
+    // of the viz being displayed)
+    if (window.innerWidth > 640) {
+      Plotly.Plots.resize(gd);
+    }
   };
 
 });

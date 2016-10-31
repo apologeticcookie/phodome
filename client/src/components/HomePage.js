@@ -77,16 +77,17 @@ const HomePage = props => (
         }
         iconElementRight={
           <IconButton
-            iconClassName='muidocs-icon-custom-github'
+            iconClassName="muidocs-icon-custom-github"
             iconStyle={iconStyle}
             href='https://github.com/apologeticcookie/apologeticcookie' />}
       />
-      <div className='homepage'>
+      <div className="homepage">
         <h1>Phodome</h1>
         <p>See your photos around you, truly.</p>
-        <RaisedButton label='Demo' onClick={props.toggleDemo} buttonStyle={buttonStyle} labelStyle={labelStyle} />
+        <RaisedButton label="Demo" onClick={props.toggleDemo} buttonStyle={buttonStyle} labelStyle={labelStyle} />
       </div>
-      <div id='domeViz' ></div>
+      <div id="domeViz"></div>
+      <img className="dome-viz-img" src="/assets/dome-viz.png" />
       <Subheader style={{color: grey900, textAlign: 'center', position: 'absolute', bottom: '5%'}} >An ApologeticCookie Creation :)</Subheader>
 
     </div>

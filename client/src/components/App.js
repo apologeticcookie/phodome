@@ -33,7 +33,7 @@ class App extends React.Component {
 
     return (
       <div>
-        <div style={style} className="llama">
+        <div style={style}>
           <HomePage toggleDemo={this.toggleDemo}/>
         </div>
         {
