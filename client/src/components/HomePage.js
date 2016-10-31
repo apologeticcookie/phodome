@@ -76,8 +76,8 @@ const HomePage = props => (
               </IconMenu>
         }
         iconElementRight={
-          <IconButton 
-            iconClassName='muidocs-icon-custom-github' 
+          <IconButton
+            iconClassName='muidocs-icon-custom-github'
             iconStyle={iconStyle}
             href='https://github.com/apologeticcookie/apologeticcookie' />}
       />
@@ -93,4 +93,8 @@ const HomePage = props => (
   </MuiThemeProvider>
 );
 
-export default HomePage
+HomePage.propTypes = {
+  toggleDemo: React.PropTypes.func.isRequired
+};
+
+export default HomePage;
