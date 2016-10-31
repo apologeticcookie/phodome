@@ -3,6 +3,14 @@ var fs = require('fs');
 var path = require('path');
 var _existsSync = fs.existsSync || path.existsSync;
 
+/*
+This helper file constructs the FileInfo object with information about the uploaded file
+Initiates the url for File Location.
+Validates if the file size falls with the size limit
+the baseUrl field identifies maps to a particular image which can be fetched with a get request
+TODO: server sometimes crashes when  upload is more than 1 MB should look in to it
+
+*/
 
 var FileInfo = function(file) {
   this.name = file.name;
