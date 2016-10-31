@@ -50,7 +50,11 @@ All client code is located inside the `/client` folder. `/client/src/` contains 
 
 #### React Components
 
-Phodome consists of two primary components: the non-VR `<Sidebar>`, which renders the sidebar for user actions (going home and uploading photos), and `<PhodomeScene>`, which contains the entirety of the VR application. `<PhodomeScene>` itself then contains a `<Camera>`, `<Sky>`, and `<Dome>`. `<Dome>` is the container for all `<Image>` components, and `<Dome>` is what makes use of the `sphereMath` module to calculate `<Image>` positions.
+`<App>` is the top-most component that renders either a `<HomePage>` or the actual Phodome app inside `<Container>`; the user can toggle between these two views. `<Container>` maintains state (re: images in the app) and renders the `<Sidebar>` (which has a link to Home view and contains the photo uploader) and the `<PhodomeScene>` (which is the actual VR application itself).
+
+`<PhodomeScene>` itself then contains a `<Camera>`, `<Sky>`, and `<Dome>`. `<Dome>` is the container for all `<Image>` components, and `<Dome>` is what makes use of the `sphereMath` module to calculate `<Image>` positions.
+
+[Material-UI](http://www.material-ui.com/) is used heavily inside `<Sidebar>`, as well as within `<HomePage>`.
 
 ### Front-End Testing
 
@@ -73,7 +77,7 @@ All the server files are under /server
 
 /helpers/requestHandler.js -- holds the route path for all the various end points.
 
-/helpers/uploadHandler.js -- holds the actual implementation for the get and post post uses formidable library for recieving files. 
+/helpers/uploadHandler.js -- holds the actual implementation for the get and post post uses formidable library for recieving files.
 At first the file chunks are saved in the tmp folder and then moved to actual public/images
 
 ### Back-End Testing
@@ -129,6 +133,38 @@ d) To run server tests, in another terminal window, start Mocha
 npm run test:server
 ```
 
+
+### Potential Next Steps
+
+There are a number of features that would be prime targets for groups hoping to expand on Phodome. In no particular order:
+
+1. Custom 'domes'/rooms/sessions
+
+Currently all photos are added to a global, shared dome. It would be ideal if users could create their own custom domes, accessible with a unique, randomly generated URL (such as `phodome.com/ldItZ/`), and share that URL with friends. This does *not* require users + authentication, but would integrate nicely with it if user authentication was added.
+
+2. User authentication
+
+User authentication would integrate well with custom rooms/sessions. If user authentication and custom rooms were implemented, ideally a user would have some interface for creating and deleting their custom rooms.
+
+3. Friends
+
+Ability to add other users as friends and more easily access their domes.
+
+4. Social media integration
+
+Pull your own photos from Facebook, Instagram, etc.
+
+5. A way to focus on specific photos
+
+More specifically, a method for looking at a photo in a dome, and pulling it closer to the user's view so that they can look at it more... closely.
+
+6. Loading screen
+
+For the sake of user smoothness, defer rendering of the photo dome until all images have finished loading, and add in a swanky loading animation until that point. This would likely require somehow hooking into A-Frame's loading process. It's uncertain just how much work it would take to implement this, but it would certainly enhance the user experience.
+
+7. Photo sphere?!?!?!
+
+Phodome -> Phosphere. Would allow for better view of photos once higher volumes are reached.
 
 ### Roadmap
 
