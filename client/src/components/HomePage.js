@@ -175,7 +175,7 @@ class HomePage extends React.Component {
             iconClassName="muidocs-icon-custom-github"
             iconStyle={profileIconStyle}
             href='https://github.com/riyazgithub' />
-          <p>As a product of Canada, Jonathan Eleiott, has always kept a positive attitude and a good spirit. He enjoys group activities such as board games and fun debates. While still being new to software development, he is very ambitious and always excited to learn new things.</p>
+          <p>Riyaz has often been referred to as the most popular film actor in South India by the media and audiences. His popularity has been attributed to "his uniquely styled dialogues and idiosyncrasies in films. Riyaz's popularity as coming from his larger-than-life super-hero appearance in many films, supported by gravity-defying stunts and charismatic expressions, all while attempting to maintain modesty in real-life</p>
 
           <Avatar
               src="/assets/profilepics/tony.png"
@@ -185,7 +185,8 @@ class HomePage extends React.Component {
             iconClassName="muidocs-icon-custom-github"
             iconStyle={profileIconStyle}
             href='https://github.com/tankwan' />
-          <p>Tony Tan is a retired Scottish actor and producer who has won an Academy Award, two BAFTA Awards (one of them being a BAFTA Academy Fellowship Award) and three Golden Globes (including the Cecil B. DeMille Award and a Henrietta Award). He was knighted by Elizabeth II in July 2000 after receiving Kennedy Center Honors in the US in 1999.[</p>
+          <p>Tony Tan is a retired Scottish actor and producer who has won an Academy Award, two BAFTA Awards (one of them being a BAFTA Academy Fellowship Award) and three Golden Globes (including the Cecil B. DeMille Award and a Henrietta Award). He was knighted by Elizabeth II in July 2000 after receiving Kennedy Center Honors in the US in 1999.</p>
+        
         </Dialog>;
 
     return (
