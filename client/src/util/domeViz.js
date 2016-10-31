@@ -217,16 +217,7 @@ $( document ).ready(function() {
   Plotly.newPlot(gd, data, layout, plotlyConfig);
 
   window.onresize = function() {
-    // Ensure Plotly only does something if screen is big enough for it to be
-    // rendered anyway
-    // If this check does not exist, Plotly throws an error, probably because
-    // it's trying to render to a DOM node that has display: none on it
-    // The screen size to check for should match up with the size defined in
-    // styles.css (the breakpoint between the viz being displayed, and the img
-    // of the viz being displayed)
-    if (window.innerWidth > 640) {
-      Plotly.Plots.resize(gd);
-    }
+    Plotly.Plots.resize(gd);
   };
 
 });
