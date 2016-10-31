@@ -78,7 +78,7 @@ class HomePage extends React.Component {
     super(props);
     this.state = {
       openAbout: false,
-      openTeam: true
+      openTeam: false
     };
 
     this.handleOpenAbout = this.handleOpenAbout.bind(this);
@@ -175,7 +175,7 @@ class HomePage extends React.Component {
             iconClassName="muidocs-icon-custom-github"
             iconStyle={profileIconStyle}
             href='https://github.com/riyazgithub' />
-          <p>Riyaz has often been referred to as the most popular film actor in South India by the media and audiences. His popularity has been attributed to "his uniquely styled dialogues and idiosyncrasies in films. Riyaz's popularity as coming from his larger-than-life super-hero appearance in many films, supported by gravity-defying stunts and charismatic expressions, all while attempting to maintain modesty in real-life</p>
+          <p>Riyaz has often been referred to as the most popular film actor in South India by the media and audiences. His popularity has been attributed to his uniquely styled dialogues and idiosyncrasies in films. Riyaz's popularity as coming from his larger-than-life super-hero appearance in many films, supported by gravity-defying stunts and charismatic expressions, all while attempting to maintain modesty in real-life</p>
 
           <Avatar
               src="/assets/profilepics/tony.png"
