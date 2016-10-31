@@ -10,8 +10,8 @@ import React from 'react';
 
 const Sky = props => (
   <Entity
+    material={{ src: 'url(assets/milkyway.jpg)'}}
     geometry={{ primitive: 'sphere', radius: 100 }}
-    material={{ shader: 'flat', color: props.color }}
     scale="1 1 -1"/>
 );
 
