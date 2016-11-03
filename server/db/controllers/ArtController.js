@@ -8,7 +8,7 @@ module.exports = {
   getArt: function getArt(id, cb) {
     Art.findById(id)
     .then(function(art) {
-      cb(art);
+      cb(art.dataValues);
     })
     .catch(function(e) {
       console.error(e);
@@ -16,6 +16,11 @@ module.exports = {
   },
 
   insertArt: function insertArt(art) {
+    for (var key in art) {
+      if (art[key].length > 255) {
+        art[key] = art[key].slice(0, 253);
+      }
+    }
     art.related.forEach(function(id) {
       ArtJoin.create({id1: art.id, id2: id});
     });
@@ -38,42 +43,38 @@ module.exports = {
   },
 
   initArts: function initArts(cb) {
-    availableArtIds = [];
-    requiredArtIds = [];
+    if (availableArtIds.length === 0) {
+      availableArtIds = [];
+      requiredArtIds = [];
 
-    ArtJoin.findAll({})
-    .then(function(arts) {
-      arts.forEach(function(art) {
-        availableArtIds.push(art.dataValues.id1);
-        var added = [];
-        availableArtIds = availableArtIds.filter(function(id) {
-          if (!added.includes(id)) {
-            added.push(id);
-            return true;
-          }
-          return false;
+      Art.findAll({attributes: ['id']})
+      .then(function(arts) {
+        console.log(`Retrieved ${arts.length} arts from database!`);
+        arts.forEach(function(art) {
+          availableArtIds.push(art.dataValues.id);
         });
-
-        requiredArtIds.push(art.dataValues.id2);
-        added = [];
-        availableArtIds = availableArtIds.filter(function(id) {
-          if (!added.includes(id) && !availableArtIds.includes(id)) {
-            added.push(id);
-            return true;
-          }
-          return false;
-        }); 
+        if (cb) {
+          console.log('initArts COMPLETE');
+          cb(availableArtIds, requiredArtIds);
+        }
+      })
+      .catch(function(e) {
+        console.error(e);
       });
+    } else {
       if (cb) {
         cb(availableArtIds, requiredArtIds);
       }
-    });
+    }
   },
 
   getRandomArt: function getRandomArt(cb) {
-    this.initArts(function(availableArtIds, requiredArtIds) {
+    if (availableArtIds.length !== 0) {
       const id = availableArtIds[Math.floor(Math.random() * availableArtIds.length)];
+      console.log('id =' + id);
       this.getArt(id, cb);
-    }.bind(this) );
+    } else {
+      console.log('You must call initArts before calling getRandomArt');
+    }
   }
 };
