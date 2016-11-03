@@ -30,3 +30,6 @@ bower_components/
 
 # Curse DS_Store >:(
 .DS_Store
+
+# data examples
+*/exampleget.html
