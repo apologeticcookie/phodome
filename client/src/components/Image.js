@@ -26,6 +26,7 @@ const Image = props => (
     material={{
       src: `url(${props.src})`
     }}
+    onClick={() => {props.onImageClick('TestScene'); } }
   />
 );
 

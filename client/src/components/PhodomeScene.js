@@ -9,7 +9,7 @@ import Sky from './Sky';
 import Image from './Image';
 import Dome from './Dome';
 
-const PhodomeScene = ({images}) => (
+const PhodomeScene = ({images, onImageClick}) => (
   <Scene>
     <Camera>
       <a-cursor
@@ -19,7 +19,7 @@ const PhodomeScene = ({images}) => (
 
     <Sky color="#000"/>
 
-    <Dome images={images} />
+    <Dome images={images} onImageClick={onImageClick} />
 
     <Entity light={{type: 'ambient', color: '#888', intensity: 2}}/>
 
