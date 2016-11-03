@@ -25,6 +25,7 @@ const Dome = props => {
             key={imageUrl}
             src={imageUrl}
             position={`${x} ${y} ${z}`}
+            onImageClick={props.onImageClick}
             />
           );
         })
