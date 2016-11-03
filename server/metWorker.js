@@ -2,7 +2,7 @@ const request = require('request');
 const ArtController = require('./db/controllers/ArtController');
 const requestsPerTick = 1;
 const period = 10;
-const startingId = 402000;
+const startingId = 404000;
 const endingId = 500000;
 const maxOpenRequests = 10;
 var openRequests = 0;
@@ -51,7 +51,7 @@ const addArt = function addArt(id) {
   request.get('http://www.metmuseum.org/art/collection/search/' + id, function(error, response, body) {
     openRequests--;
     if (error) {
-      console.log(error);
+      console.error(error);
       return;
     }
 
