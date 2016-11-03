@@ -68,4 +68,16 @@ router.route('/arts/:id')
   });
 });
 
+router.route('/arts/related/:id')
+.get(function(req, res) {
+  console.log('In get /arts/related, you requested art related to id:' + req.params.id);
+  ArtController.getRelatedArts(req.params.id, function(arts) {
+    if (arts) {
+      res.send(200, arts);
+    } else {
+      res.send(404);
+    }
+  });
+});
+
 module.exports.router = router;

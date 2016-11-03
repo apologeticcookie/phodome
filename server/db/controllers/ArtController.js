@@ -35,11 +35,15 @@ module.exports = {
     });
   },
 
-  getRelatedArts: function getRelatedArts(art, cb) {
-    ArtJoin.findAll({where: {id1: art.id}})
-    .then(function(arts) {
-      arts = arts.map(function(art) { return art.dataValues; });
-      cb(arts);
+  getRelatedArts: function getRelatedArts(id, cb) {
+    ArtJoin.findAll({where: {id1: id}})
+    .then(function(artjoins) {
+      artjoins = artjoins.map(function(artjoin) { return artjoin.dataValues.id2; });
+      Art.findAll({where: {id: artjoins}})
+      .then(function(arts) {
+        arts = arts.map(function(art) { return art.dataValues; });
+        cb(arts);
+      });
     })
     .catch(function(e) {
       console.error(e);
