@@ -50,6 +50,9 @@ var Art = db.define('art', {
   },
   Maker: {
     type: Sequelize.STRING
+  },
+  related: {
+    type: Sequelize.STRING
   }
 });
 
