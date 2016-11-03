@@ -3,6 +3,7 @@ var nodeStatic = require('node-static'); // Why do we use this
 var path = require('path');
 var fileServer = new nodeStatic.Server(options.publicDir, options.nodeStatic); //  a static file server which serves provided as part of node
 var UploadHandler = require('./uploadHandler');
+const ArtController = require('../db/controllers/ArtController');
 
 var express = require('express');
 var router = express.Router();
@@ -45,6 +46,14 @@ router.route('/images')
   var handler = new UploadHandler(req, res);
   handler.post();
 
+});
+
+router.route('/arts')
+.get(function (req, res) {
+  console.log('In get /arts, you requested a random piece of art');
+  ArtController.getRandomArt(function(art) {
+    res.send(200, art);
+  });
 });
 
 module.exports.router = router;

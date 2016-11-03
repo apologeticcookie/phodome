@@ -4,6 +4,8 @@ var morgan = require('morgan'); // middleware for logging request details
 var bodyParser = require('body-parser'); // middleware supports unicode encoding of the body
 var compression = require('compression'); // middleware for gzip compression
 var requestHandler = require('./helpers/requestHandler').router;
+const ArtController = require('./db/controllers/ArtController');
+ArtController.initArts();
 
 var allowCrossDomain = function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');

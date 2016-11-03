@@ -54,9 +54,9 @@ module.exports = {
           availableArtIds.push(art.dataValues.id);
         });
         if (cb) {
-          console.log('initArts COMPLETE');
           cb(availableArtIds, requiredArtIds);
         }
+        console.log('initArts COMPLETE');
       })
       .catch(function(e) {
         console.error(e);
