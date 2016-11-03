@@ -1,5 +1,11 @@
 const request = require('request');
 const ArtController = require('./db/controllers/ArtController');
+const requestsPerTick = 1;
+const period = 15;
+const startingId = 400000;
+const endingId = 500000;
+const maxOpenRequests = 50;
+var openRequests = 0;
 
 const findBetween = function findBetween(iString, firstChar, lastChar) {
   const indexes = [];
@@ -16,6 +22,19 @@ const findBetween = function findBetween(iString, firstChar, lastChar) {
   return null;
 };
 
+// const findBetween = function findBetween(input, left, right) {
+//   return cutBefore
+// };
+
+const cutHere = function cutHere(iString, cutString) {
+  const index = iString.indexOf(cutString);
+  if (index !== -1) {
+    return iString.slice(0, index);
+  } else {
+    return null;
+  }
+};
+
 const cutBefore = function cutBefore(iString, cutString) {
   const index = iString.indexOf(cutString);
   if (index !== -1) {
@@ -26,13 +45,15 @@ const cutBefore = function cutBefore(iString, cutString) {
 };
 
 const addArt = function addArt(id) {
-
+  openRequests++;
   request.get('http://www.metmuseum.org/art/collection/search/' + id, function(error, response, body) {
+    openRequests--;
     if (error) {
       console.log(error);
       return;
     }
 
+    //MET HTML PARSER
     const art = {id: id, related: []};
     body = cutBefore(body, '#collectionImage');
     if (body === null) { //if there is no #collectionImage, then this item doesn't exist
@@ -70,8 +91,6 @@ const addArt = function addArt(id) {
   });
 };
 
-const requestsPerTick = 3;
-const period = 500;
 
 const addAll = function(idArray) {
   const length = idArray.length;
@@ -92,7 +111,7 @@ const addAll = function(idArray) {
   }, period);
 };
 
-//Grab related of all in DB
+//Grab related of all in DB, this is disabled by default
 const grabRelated = function grabRelated() {
   ArtController.initArts(function(availableArtIds, requiredArtIds) {
     const idsToRequest = [];
@@ -107,28 +126,33 @@ const grabRelated = function grabRelated() {
 
 //Grab new 
 const grabNew = function grabNew(startingId, endingId, availableArtIds, requiredArtIds) {
-
   var i = startingId;
   var j = i;
-  
+  // THROTTLING BY TIME
   var tick = setInterval(function() {
     if (i >= endingId) {
       clearInterval(tick);
-      // grabRelated();
+      tick = setInterval(function() {
+        if (openRequests === 0) {
+          console.log('COMPLETE');
+          clearInterval(tick);
+        }
+      }, 100);//allow open request to close
       return;
     }
-    console.log(`Fetching ${i} until ${endingId}`);
-    j += requestsPerTick;
-    for (i = i; i < j && i < endingId; i++) {
-      if (!availableArtIds.includes(i)) {
-        addArt(i);
+    if (openRequests < maxOpenRequests) {
+      console.log(`Fetching ${i} until ${endingId}, there are ${openRequests} open requests.`);
+      j += requestsPerTick;
+      for (i = i; i < j && i < endingId; i++) {
+        if (!availableArtIds.includes(i)) {
+          addArt(i);
+        }
       }
     }
+  
   }, period);
 };
 
-const startingId = 1;
-const endingId = 5000;
 ArtController.initArts(function(availableArtIds, requiredArtIds) {
   grabNew(startingId, endingId, availableArtIds, requiredArtIds); 
 });
