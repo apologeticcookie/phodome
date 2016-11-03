@@ -1,15 +1,92 @@
-var request = require('request');
+const request = require('request');
+const ArtController = require('./db/controllers/ArtController');
 
-request.get('http://www.metmuseum.org/art/collection/search/12232', function(error, response, body) {
-  const indexOfA = body.indexOf('#collectionImage');
-  body = body.slice(indexOfA);
-  const indexOfUrl = body.indexOf('ng-src=');
-  const parIndexes = [];
-  for (var i = indexOfUrl + 6; parIndexes.length < 2; i++ ) {
-    if (body[i] === '(' || body[i] === ')') {
-      parIndexes.push(i);
+const findBetween = function findBetween(iString, firstChar, lastChar) {
+  const indexes = [];
+  for (var i = 0; indexes.length < 2 && i < iString.length; i++) {
+    if (iString[i] === firstChar && indexes.length === 0) {
+      indexes.push(i);
+    } else if (iString[i] === lastChar && indexes.length === 1) {
+      indexes.push(i);
     }
   }
-  const url = body.slice(parIndexes[0] + 2, parIndexes[1] - 1);
-  debugger;
-});
+  if (indexes.length === 2) {
+    return iString.slice(indexes[0] + 1, indexes[1]);
+  }
+  return null;
+};
+
+const cutBefore = function cutBefore(iString, cutString) {
+  const index = iString.indexOf(cutString);
+  if (index !== -1) {
+    return iString.slice(index);
+  } else {
+    return null;
+  }
+};
+
+const Arts = [];
+const addArt = function addArt(id) {
+
+  request.get('http://www.metmuseum.org/art/collection/search/' + id, function(error, response, body) {
+    if (error) {
+      console.log(error);
+      return;
+    }
+
+    const art = {id: id, related: []};
+    body = cutBefore(body, '#collectionImage');
+    if (body === null) { //if there is no #collectionImage, then this item doesn't exist
+      return;
+    }
+    body = cutBefore(body, 'ng-src=');
+    art.smallUrl = findBetween(body, '\'', '\'');
+
+    body = cutBefore(body, 'utility-menu__item utility-menu__item--download');
+    if (body === null) { //if there is no download button, this image doesn't have a picture
+      return;
+    }
+    body = cutBefore(body, '&#039');
+    art.url = findBetween(body, ';', '&');
+    
+    body = cutBefore(body, 'collection-details__object-title');
+    art.title = findBetween(body, '>', '<');
+
+    while (cutBefore(body, 'collection-details__tombstone--label') !== null) {
+      body = cutBefore(body, 'collection-details__tombstone--label');
+      const key = findBetween(body, '>', ':');
+      body = cutBefore(body, 'collection-details__tombstone--value');
+      const value = findBetween(body, '>', '<');
+      art[key] = value; 
+    }
+
+    while (cutBefore(body, 'card__standard-image') !== null) {
+      body = cutBefore(body, 'card__standard-image');
+      body = cutBefore(body, 'href');
+      const id = findBetween(body, '"', '"');
+      const indexOfId = id.indexOf('search/') + 7;
+      art.related.push(Number(id.slice(indexOfId)));
+    }
+
+    Arts.push(art);
+    ArtController.insertArt(art);
+  });
+};
+
+const startingId = 500;
+const endingId = 600;
+const requestsPerTick = 25;
+
+var i = startingId;
+var j = i;
+const tick = setInterval(function() {
+  console.log(`Fetching ${i} until ${endingId}`);
+  j += requestsPerTick;
+  for (i = i; i < j && i < endingId; i++) {
+    addArt(i);
+  }
+  Arts.dope = true;
+  if (i > endingId) {
+    clearInterval(tick);
+  }
+}, 10000);
