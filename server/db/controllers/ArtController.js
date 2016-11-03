@@ -8,7 +8,11 @@ module.exports = {
   getArt: function getArt(id, cb) {
     Art.findById(id)
     .then(function(art) {
-      cb(art.dataValues);
+      if (art) {
+        cb(art.dataValues);
+      } else {
+        cb(null);
+      }
     })
     .catch(function(e) {
       console.error(e);
@@ -31,11 +35,15 @@ module.exports = {
     });
   },
 
-  getRelatedArts: function getRelatedArts(art, cb) {
-    ArtJoin.findAll({where: {id1: art.id}})
-    .then(function(arts) {
-      arts = arts.map(function(art) { return art.dataValues; });
-      cb(arts);
+  getRelatedArts: function getRelatedArts(id, cb) {
+    ArtJoin.findAll({where: {id1: id}})
+    .then(function(artjoins) {
+      artjoins = artjoins.map(function(artjoin) { return artjoin.dataValues.id2; });
+      Art.findAll({where: {id: artjoins}})
+      .then(function(arts) {
+        arts = arts.map(function(art) { return art.dataValues; });
+        cb(arts);
+      });
     })
     .catch(function(e) {
       console.error(e);
@@ -54,9 +62,9 @@ module.exports = {
           availableArtIds.push(art.dataValues.id);
         });
         if (cb) {
-          console.log('initArts COMPLETE');
           cb(availableArtIds, requiredArtIds);
         }
+        console.log('initArts COMPLETE');
       })
       .catch(function(e) {
         console.error(e);

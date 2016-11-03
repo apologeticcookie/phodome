@@ -3,6 +3,7 @@ var nodeStatic = require('node-static'); // Why do we use this
 var path = require('path');
 var fileServer = new nodeStatic.Server(options.publicDir, options.nodeStatic); //  a static file server which serves provided as part of node
 var UploadHandler = require('./uploadHandler');
+const ArtController = require('../db/controllers/ArtController');
 
 var express = require('express');
 var router = express.Router();
@@ -45,6 +46,38 @@ router.route('/images')
   var handler = new UploadHandler(req, res);
   handler.post();
 
+});
+
+router.route('/arts')
+.get(function (req, res) {
+  console.log('In get /arts, you requested a random piece of art');
+  ArtController.getRandomArt(function(art) {
+    res.send(200, art);
+  });
+});
+
+router.route('/arts/:id')
+.get(function(req, res) {
+  console.log('In get /arts, you requested art with id:' + req.params.id);
+  ArtController.getArt(req.params.id, function(art) {
+    if (art) {
+      res.send(200, art);
+    } else {
+      res.send(404);
+    }
+  });
+});
+
+router.route('/arts/related/:id')
+.get(function(req, res) {
+  console.log('In get /arts/related, you requested art related to id:' + req.params.id);
+  ArtController.getRelatedArts(req.params.id, function(arts) {
+    if (arts) {
+      res.send(200, arts);
+    } else {
+      res.send(404);
+    }
+  });
 });
 
 module.exports.router = router;
