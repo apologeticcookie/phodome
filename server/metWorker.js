@@ -1,10 +1,10 @@
 const request = require('request');
 const ArtController = require('./db/controllers/ArtController');
 const requestsPerTick = 1;
-const period = 15;
-const startingId = 400000;
+const period = 10;
+const startingId = 401400;
 const endingId = 500000;
-const maxOpenRequests = 50;
+const maxOpenRequests = 10;
 var openRequests = 0;
 
 const findBetween = function findBetween(iString, firstChar, lastChar) {

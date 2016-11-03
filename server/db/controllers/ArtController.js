@@ -20,7 +20,10 @@ module.exports = {
       ArtJoin.create({id1: art.id, id2: id});
     });
     art.related = art.related.join(',');
-    Art.create(art);
+    Art.create(art)
+    .catch(function(e) {
+      console.error(e);
+    });
   },
 
   getRelatedArts: function getRelatedArts(art, cb) {
@@ -38,11 +41,28 @@ module.exports = {
     availableArtIds = [];
     requiredArtIds = [];
 
-    Art.findAll({})
+    ArtJoin.findAll({})
     .then(function(arts) {
       arts.forEach(function(art) {
-        availableArtIds.push(art.dataValues.id);
-        requiredArtIds = requiredArtIds.concat(art.dataValues.related.split(',')); 
+        availableArtIds.push(art.dataValues.id1);
+        var added = [];
+        availableArtIds = availableArtIds.filter(function(id) {
+          if (!added.includes(id)) {
+            added.push(id);
+            return true;
+          }
+          return false;
+        });
+
+        requiredArtIds.push(art.dataValues.id2);
+        added = [];
+        availableArtIds = availableArtIds.filter(function(id) {
+          if (!added.includes(id) && !availableArtIds.includes(id)) {
+            added.push(id);
+            return true;
+          }
+          return false;
+        }); 
       });
       if (cb) {
         cb(availableArtIds, requiredArtIds);
