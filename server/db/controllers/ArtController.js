@@ -8,7 +8,11 @@ module.exports = {
   getArt: function getArt(id, cb) {
     Art.findById(id)
     .then(function(art) {
-      cb(art.dataValues);
+      if (art) {
+        cb(art.dataValues);
+      } else {
+        cb(null);
+      }
     })
     .catch(function(e) {
       console.error(e);

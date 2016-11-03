@@ -56,4 +56,16 @@ router.route('/arts')
   });
 });
 
+router.route('/arts/:id')
+.get(function(req, res) {
+  console.log('In get /arts, you requested art with id:' + req.params.id);
+  ArtController.getArt(req.params.id, function(art) {
+    if (art) {
+      res.send(200, art);
+    } else {
+      res.send(404);
+    }
+  });
+});
+
 module.exports.router = router;
