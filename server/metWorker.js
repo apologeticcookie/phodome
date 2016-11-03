@@ -2,10 +2,11 @@ const request = require('request');
 const ArtController = require('./db/controllers/ArtController');
 const requestsPerTick = 1;
 const period = 10;
-const startingId = 401400;
+const startingId = 402000;
 const endingId = 500000;
 const maxOpenRequests = 10;
 var openRequests = 0;
+const pendingRequests = [];
 
 const findBetween = function findBetween(iString, firstChar, lastChar) {
   const indexes = [];
@@ -45,6 +46,7 @@ const cutBefore = function cutBefore(iString, cutString) {
 };
 
 const addArt = function addArt(id) {
+
   openRequests++;
   request.get('http://www.metmuseum.org/art/collection/search/' + id, function(error, response, body) {
     openRequests--;
@@ -153,6 +155,34 @@ const grabNew = function grabNew(startingId, endingId, availableArtIds, required
   }, period);
 };
 
+const requestLauncher = function requestLauncher() {
+  if (pendingRequests.length > 0 && openRequests < maxOpenRequests) {
+    addArt(pendingRequests.pop());
+  }
+};
+
+
+const searchMet = function searchMet(search, availableArtIds, page = 0) {
+  openRequests++;
+  request.get(`http://metmuseum.org/art/collection#!?=&offset=${page * 50}&pageSize=0&q=${search}&perPage=50`, function(error, response, body) {
+    var id;
+    var total;
+    openRequests--;
+
+    while (cutBefore(body, 'card__standard-image')) {
+      body = cutBefore(body, 'card__standard-image');
+      body = cutBefore(body, 'href');
+      id = findBetween(body, 'search/', '?');
+      debugger;
+      if (!availableArtIds.includes(id)) {
+        pendingRequests.push(id);
+      } 
+    }  
+  });
+};
+
 ArtController.initArts(function(availableArtIds, requiredArtIds) {
-  grabNew(startingId, endingId, availableArtIds, requiredArtIds); 
+  grabNew(startingId, endingId, availableArtIds, requiredArtIds);
+  // searchMet('rembrandt', availableArtIds);
+  // const tick = setInterval(requestLauncher, period);
 });
