@@ -2,9 +2,9 @@ const request = require('request');
 const ArtController = require('./db/controllers/ArtController');
 const requestsPerTick = 1;
 const period = 10;
-const startingId = 404000;
+const startingId = 402800;
 const endingId = 500000;
-const maxOpenRequests = 10;
+const maxOpenRequests = 20;
 var openRequests = 0;
 const pendingRequests = [];
 
