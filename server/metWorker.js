@@ -65,17 +65,16 @@ const addArt = function addArt(id) {
       const id = findBetween(body, '"', '"');
       const indexOfId = id.indexOf('search/') + 7;
       art.related.push(Number(id.slice(indexOfId)));
-    }
-
-     
+    }     
     ArtController.insertArt(art);
   });
 };
 
+const requestsPerTick = 3;
+const period = 500;
+
 const addAll = function(idArray) {
   const length = idArray.length;
-  const requestsPerTick = 10;
-  const period = 3000;
   var i = 0;
   var j = i;
 
@@ -86,35 +85,15 @@ const addAll = function(idArray) {
     }
     if (i >= length) {
       clearInterval(tick);
+      console.log('WORKER COMPLETE');
+      setTimeout(function() { }, 15000);//allow any remaining requests to finish
+      return;
     }
   }, period);
 };
 
-const startingId = 500;
-const endingId = 600;
-const requestsPerTick = 10;
-const period = 3000;
-
-var i = startingId;
-var j = i;
-
-const grabNew = false;
-//Grab new 
-if (grabNew) {
-  var tick = setInterval(function() {
-    console.log(`Fetching ${i} until ${endingId}`);
-    j += requestsPerTick;
-    for (i = i; i < j && i < endingId; i++) {
-      addArt(i);
-    }
-    if (i >= endingId) {
-      clearInterval(tick);
-    }
-  }, period);
-}
-
 //Grab related of all in DB
-if (!grabNew) {
+const grabRelated = function grabRelated() {
   ArtController.initArts(function(availableArtIds, requiredArtIds) {
     const idsToRequest = [];
     requiredArtIds.forEach(function(id) {
@@ -124,4 +103,32 @@ if (!grabNew) {
     });
     addAll(idsToRequest);
   });
-}
+};
+
+//Grab new 
+const grabNew = function grabNew(startingId, endingId, availableArtIds, requiredArtIds) {
+
+  var i = startingId;
+  var j = i;
+  
+  var tick = setInterval(function() {
+    if (i >= endingId) {
+      clearInterval(tick);
+      // grabRelated();
+      return;
+    }
+    console.log(`Fetching ${i} until ${endingId}`);
+    j += requestsPerTick;
+    for (i = i; i < j && i < endingId; i++) {
+      if (!availableArtIds.includes(i)) {
+        addArt(i);
+      }
+    }
+  }, period);
+};
+
+const startingId = 1;
+const endingId = 5000;
+ArtController.initArts(function(availableArtIds, requiredArtIds) {
+  grabNew(startingId, endingId, availableArtIds, requiredArtIds); 
+});

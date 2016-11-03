@@ -1,7 +1,7 @@
 const Art = require('../models/Art');
 const ArtJoin = require('../models/ArtJoin');
 
-const availableArtIds = [];
+var availableArtIds = [];
 var requiredArtIds = [];
 
 module.exports = {
@@ -35,6 +35,9 @@ module.exports = {
   },
 
   initArts: function initArts(cb) {
+    availableArtIds = [];
+    requiredArtIds = [];
+
     Art.findAll({})
     .then(function(arts) {
       arts.forEach(function(art) {
@@ -48,11 +51,9 @@ module.exports = {
   },
 
   getRandomArt: function getRandomArt(cb) {
-    if (availableArtIds === undefined) {
-      this.initArts(function() { this.getRandomArt(cb); }.bind(this) );
-      return;
-    }
-    const id = availableArtIds[Math.floor(Math.random() * availableArtIds.length)];
-    this.getArt(id, cb);
+    this.initArts(function(availableArtIds, requiredArtIds) {
+      const id = availableArtIds[Math.floor(Math.random() * availableArtIds.length)];
+      this.getArt(id, cb);
+    }.bind(this) );
   }
 };
