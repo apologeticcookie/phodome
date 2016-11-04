@@ -4,6 +4,7 @@ var path = require('path');
 var fileServer = new nodeStatic.Server(options.publicDir, options.nodeStatic); //  a static file server which serves provided as part of node
 var UploadHandler = require('./uploadHandler');
 const ArtController = require('../db/controllers/ArtController');
+const http = require('http');
 
 var express = require('express');
 var router = express.Router();
@@ -80,4 +81,32 @@ router.route('/arts/related/:id')
   });
 });
 
+router.route('/get/:id')
+  .get(function (req, res) {
+    var src = req.params.id;
+    while (src.indexOf('SLASH') >= 0) {
+      src = src.replace('SLASH', '/');
+    }
+
+    const options = {
+      url: src,
+      headers: {
+        'Content-Type': 'image/jpeg'
+      }
+    };
+    http.get(src, function(httpResponse) {
+      var body = '';
+      httpResponse.setEncoding('binary');
+      httpResponse.on('data', function(chunk) {
+        body += chunk;
+      });
+      httpResponse.on('end', function() {
+        res.writeHead(200, {
+          'Content-Type': 'image/jpeg',
+          'Content-Length': httpResponse.headers['content-length']
+        });
+        res.end(body, 'binary');
+      });
+    });
+  });
 module.exports.router = router;

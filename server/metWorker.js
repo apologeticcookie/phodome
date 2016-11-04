@@ -2,7 +2,7 @@ const request = require('request');
 const ArtController = require('./db/controllers/ArtController');
 const requestsPerTick = 1;
 const period = 10;
-const startingId = 402800;
+const startingId = 455555;
 const endingId = 500000;
 const maxOpenRequests = 20;
 var openRequests = 0;
@@ -22,10 +22,6 @@ const findBetween = function findBetween(iString, firstChar, lastChar) {
   }
   return null;
 };
-
-// const findBetween = function findBetween(input, left, right) {
-//   return cutBefore
-// };
 
 const cutHere = function cutHere(iString, cutString) {
   const index = iString.indexOf(cutString);
@@ -52,6 +48,9 @@ const addArt = function addArt(id) {
     openRequests--;
     if (error) {
       console.error(error);
+      if (error.code !== 'ETIMEDOUT') {
+        setTimeout(process.exit, 10000);  
+      }
       return;
     }
 
@@ -168,12 +167,10 @@ const searchMet = function searchMet(search, availableArtIds, page = 0) {
     var id;
     var total;
     openRequests--;
-
     while (cutBefore(body, 'card__standard-image')) {
       body = cutBefore(body, 'card__standard-image');
       body = cutBefore(body, 'href');
       id = findBetween(body, 'search/', '?');
-      debugger;
       if (!availableArtIds.includes(id)) {
         pendingRequests.push(id);
       } 
