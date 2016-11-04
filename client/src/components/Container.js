@@ -13,10 +13,11 @@ class Container extends React.Component {
 
     this.handleUploadComplete = this.handleUploadComplete.bind(this);
     this.fetchImages = this.fetchImages.bind(this);
+    this.fetchArts = this.fetchArts.bind(this);
   }
 
   componentDidMount() {
-    this.fetchImages();
+    this.fetchArts();
   }
 
   fetchImages() {
@@ -38,6 +39,31 @@ class Container extends React.Component {
     });
   }
 
+  fetchArts() {
+    const context = this;
+    const artPromises = [];
+    for (var i = 0; i < 30; i++) {
+      artPromises.push(axios.get('/api/arts'));
+    }
+    axios.all(artPromises)
+    .then(axios.spread(function() {
+      let imageUrls = [];
+      for (var key in arguments) {
+        imageUrls.push(arguments[key].data.smallUrl);
+      }
+      imageUrls = imageUrls.map(function(url) {
+        while (url.indexOf('/') >= 0) {
+          url = url.replace('/', 'SLASH');
+        }
+        return '/api/get/' + url;
+      });
+      context.setState({
+        images: imageUrls,
+        scene: 'PhodomeScene'
+      });
+    }));
+  }
+
   changeScene(scene) {
     console.log('CHANGE SCENE');
     this.setState({
@@ -46,7 +72,7 @@ class Container extends React.Component {
   }
 
   handleUploadComplete() {
-    this.fetchImages();
+    this.fetchArts();
   }
 
   render() {
