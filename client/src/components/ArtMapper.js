@@ -4,7 +4,6 @@ import 'aframe-text-component';
 import { Entity } from 'aframe-react';
 import React from 'react';
 
-import ArtData from '../../../client/assets/dummy-data/dummy';
 import Art from './Bart';
 
 const ArtMapper = props => {

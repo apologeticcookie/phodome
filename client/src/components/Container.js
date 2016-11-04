@@ -17,7 +17,7 @@ class Container extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchArts();
+    this.fetchImages();
   }
 
   fetchImages() {
@@ -72,7 +72,7 @@ class Container extends React.Component {
   }
 
   handleUploadComplete() {
-    this.fetchArts();
+    this.fetchImages();
   }
 
   render() {

@@ -4,9 +4,9 @@ import React from 'react';
 const Ceiling = props => {
 
   return (
-    <Entity position={props.position}>
-      <a-torus arc="180" radius="10" radius-tubular="0.2" color="#2d2926"
-               side="double" position="0 -1 0" scale="0.5 0.5 30" src="assets/ceiling.jpg" repeat="10 10" />
+    <Entity position={props.position} scale="1.9 1 1" rotation="0 90 0">
+      <a-torus arc="180" radius="10" radius-tubular="0.2" color="#fff"
+               side="double"  position="0 0 0" scale="0.5 1.5 500" src="assets/ceiling.jpg" repeat="2 2" />
     </Entity>
   );
 };
