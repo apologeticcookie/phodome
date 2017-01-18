@@ -31,9 +31,9 @@
   "author": "John Oksasoglu, Jon Eleiott, Riyaz Ahmed, Tony K. Tan",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/apologeticcookie/apologeticcookie/issues"
+    "url": "https://github.com/apologeticcookie/phodome/issues"
   },
-  "homepage": "https://github.com/apologeticcookie/apologeticcookie#readme",
+  "homepage": "https://github.com/apologeticcookie/phodome#readme",
   "dependencies": {
     "aframe": "^0.3.2",
     "aframe-animation-component": "^3.0.4",
