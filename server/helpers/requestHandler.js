@@ -3,6 +3,8 @@ var nodeStatic = require('node-static'); // Why do we use this
 var path = require('path');
 var fileServer = new nodeStatic.Server(options.publicDir, options.nodeStatic); //  a static file server which serves provided as part of node
 var UploadHandler = require('./uploadHandler');
+const ArtController = require('../db/controllers/ArtController');
+const http = require('http');
 
 var express = require('express');
 var router = express.Router();
@@ -47,4 +49,64 @@ router.route('/images')
 
 });
 
+router.route('/arts')
+.get(function (req, res) {
+  console.log('In get /arts, you requested a random piece of art');
+  ArtController.getRandomArt(function(art) {
+    res.send(200, art);
+  });
+});
+
+router.route('/arts/:id')
+.get(function(req, res) {
+  console.log('In get /arts, you requested art with id:' + req.params.id);
+  ArtController.getArt(req.params.id, function(art) {
+    if (art) {
+      res.send(200, art);
+    } else {
+      res.send(404);
+    }
+  });
+});
+
+router.route('/arts/related/:id')
+.get(function(req, res) {
+  console.log('In get /arts/related, you requested art related to id:' + req.params.id);
+  ArtController.getRelatedArts(req.params.id, function(arts) {
+    if (arts) {
+      res.send(200, arts);
+    } else {
+      res.send(404);
+    }
+  });
+});
+
+router.route('/get/:id')
+  .get(function (req, res) {
+    var src = req.params.id;
+    while (src.indexOf('SLASH') >= 0) {
+      src = src.replace('SLASH', '/');
+    }
+
+    const options = {
+      url: src,
+      headers: {
+        'Content-Type': 'image/jpeg'
+      }
+    };
+    http.get(src, function(httpResponse) {
+      var body = '';
+      httpResponse.setEncoding('binary');
+      httpResponse.on('data', function(chunk) {
+        body += chunk;
+      });
+      httpResponse.on('end', function() {
+        res.writeHead(200, {
+          'Content-Type': 'image/jpeg',
+          'Content-Length': httpResponse.headers['content-length']
+        });
+        res.end(body, 'binary');
+      });
+    });
+  });
 module.exports.router = router;
